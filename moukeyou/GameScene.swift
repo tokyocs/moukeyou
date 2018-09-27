@@ -23,6 +23,8 @@ class GameScene: SKScene {
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        //ゲーム画面の背景色を薄緑にする
+        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
         self.ao_ue.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ue.position = CGPoint(x: 0, y:frame.maxY + 50)

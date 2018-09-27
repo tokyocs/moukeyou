@@ -15,7 +15,8 @@ class GameScene: SKScene {
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
-        self.backgroundColor = SKColor.green
+        //ゲーム画面の背景色を薄緑にする
+        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
     }
     
     func touchDown(atPoint pos : CGPoint) {

@@ -15,8 +15,8 @@ class GameScene: SKScene {
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        self.backgroundColor = SKColor.green
     }
-    
     
     func touchDown(atPoint pos : CGPoint) {
     }

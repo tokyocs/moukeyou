@@ -10,6 +10,14 @@ import SpriteKit
 import GameplayKit
 
 class GameScene: SKScene {
+    var ao_ue:SKSpriteNode!
+    var ao_sita:SKSpriteNode!
+    var ao_hidari:SKSpriteNode!
+    var ao_migi:SKSpriteNode!
+    var aka_ue:SKSpriteNode!
+    var aka_sita:SKSpriteNode!
+    var aka_hidari:SKSpriteNode!
+    var aka_migi:SKSpriteNode!
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?

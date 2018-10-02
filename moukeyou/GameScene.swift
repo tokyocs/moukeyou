@@ -21,6 +21,7 @@ class GameScene: SKScene {
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
     }
     
+    
     func touchDown(atPoint pos : CGPoint) {
     }
     

@@ -20,6 +20,9 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
     var audioPlayer: AVAudioPlayer!
+
+    var audioPlayer: AVAudioPlayer!
+
     
     func playSound(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {

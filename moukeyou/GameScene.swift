@@ -8,8 +8,9 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
-class GameScene: SKScene {
+class GameScene: SKScene,AVAudioPlayerDelegate {
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
     var ao_hidari:SKSpriteNode!
@@ -18,13 +19,40 @@ class GameScene: SKScene {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
+    var audioPlayer: AVAudioPlayer!
+    
+    func playSound(name: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            print("nezumi")
+            return
+        }
+        
+        do {
+            // AVAudioPlayerのインスタンス化
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            // AVAudioPlayerのデリゲートをセット
+            audioPlayer.delegate = self
+            
+            // 音声の再生
+            audioPlayer.play()
+        } catch {
+        }
+    }
+    
+    
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
+    
     override func didMove(to view: SKView) {
+        playSound(name: "nezumi")
+        
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
+        
+        //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
         self.ao_ue.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ue.position = CGPoint(x: 0, y:frame.maxY + 50)

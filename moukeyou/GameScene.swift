@@ -40,12 +40,12 @@ class GameScene: SKScene {
         
         self.ao_hidari = SKSpriteNode(imageNamed: "ao_hidari")
         self.ao_hidari.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_hidari.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.ao_hidari.position = CGPoint(x: 0, y:frame.maxY + 35)
         addChild(self.ao_hidari)
         
         self.ao_migi = SKSpriteNode(imageNamed: "ao_migi")
         self.ao_migi.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_migi.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.ao_migi.position = CGPoint(x: 0, y:frame.maxY + 85)
         addChild(self.ao_migi)
         
         self.aka_ue = SKSpriteNode(imageNamed: "aka_ue")
@@ -60,12 +60,12 @@ class GameScene: SKScene {
         
         self.aka_hidari = SKSpriteNode(imageNamed: "aka_hidari")
         self.aka_hidari.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_hidari.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.aka_hidari.position = CGPoint(x: 0, y:frame.maxY + 35)
         addChild(self.aka_hidari)
         
         self.aka_migi = SKSpriteNode(imageNamed: "aka_migi")
         self.aka_migi.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_migi.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.aka_migi.position = CGPoint(x: 0, y:frame.maxY + 85)
         addChild(self.aka_migi)
     }
     

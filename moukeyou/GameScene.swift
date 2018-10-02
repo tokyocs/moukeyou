@@ -94,39 +94,44 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         
         
         //矢印各種の配置と表示
-        self.ao_sita = SKSpriteNode(imageNamed: "ao_sita")
-        self.ao_sita.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_sita.position = CGPoint(x: 0, y: frame.maxY + 50)
-        addChild(self.ao_sita)
+        self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
+        self.ao_ue.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.ao_ue.position = CGPoint(x: 80, y: frame.maxY + 450)
+        addChild(self.ao_ue)
         
+        self.ao_sita = SKSpriteNode(imageNamed: "ao_sita")
+        self.ao_sita.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.ao_sita.position = CGPoint(x: 90, y: frame.maxY + 450)
+        addChild(self.ao_sita)
+
         self.ao_hidari = SKSpriteNode(imageNamed: "ao_hidari")
-        self.ao_hidari.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_hidari.position = CGPoint(x: 0, y:frame.maxY + 35)
+        self.ao_hidari.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.ao_hidari.position = CGPoint(x: 85, y:frame.maxY + 425)
         addChild(self.ao_hidari)
         
         self.ao_migi = SKSpriteNode(imageNamed: "ao_migi")
-        self.ao_migi.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_migi.position = CGPoint(x: 0, y:frame.maxY + 85)
+        self.ao_migi.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.ao_migi.position = CGPoint(x: 85, y:frame.maxY + 475)
         addChild(self.ao_migi)
-        
+       
         self.aka_ue = SKSpriteNode(imageNamed: "aka_ue")
-        self.aka_ue.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_ue.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.aka_ue.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.aka_ue.position = CGPoint(x: 80, y:frame.maxY + 50)
         addChild(self.aka_ue)
         
         self.aka_sita = SKSpriteNode(imageNamed: "aka_sita")
-        self.aka_sita.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_sita.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.aka_sita.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.aka_sita.position = CGPoint(x: 90, y:frame.maxY + 50)
         addChild(self.aka_sita)
         
         self.aka_hidari = SKSpriteNode(imageNamed: "aka_hidari")
-        self.aka_hidari.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_hidari.position = CGPoint(x: 0, y:frame.maxY + 35)
+        self.aka_hidari.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.aka_hidari.position = CGPoint(x: 85, y:frame.maxY + 25)
         addChild(self.aka_hidari)
         
         self.aka_migi = SKSpriteNode(imageNamed: "aka_migi")
-        self.aka_migi.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_migi.position = CGPoint(x: 0, y:frame.maxY + 85)
+        self.aka_migi.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
+        self.aka_migi.position = CGPoint(x: 85, y:frame.maxY + 75)
         addChild(self.aka_migi)
 
     }

@@ -47,6 +47,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     
     
     override func didMove(to view: SKView) {
+        playSound(name: "nezumi")
         
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)

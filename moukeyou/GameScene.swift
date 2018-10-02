@@ -19,8 +19,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
-    var audioPlayer: AVAudioPlayer!
-
+    
     var audioPlayer: AVAudioPlayer!
 
     

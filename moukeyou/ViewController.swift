@@ -7,36 +7,15 @@
 //
 
 import Foundation
-
 import UIKit
-
-// AVクラスをインポートする
 import AVFoundation
 
 class ViewController: UIViewController {
-    
-    var player:AVAudioPlayer?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        
+        let sound_data = NSURL(fileURLWithPath:NSBundle.mainBundle().pathForResource("sumple", ofType: "mp3")!)
+        var audioPlayer: AVAudioPlayer = AVAudioPlayer(contentsOfURL: sound_data, error: nil)
+        audioPlayer.play()
     }
-    
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
-    }
-    
-    @IBAction func playSound(sender: AnyObject) {
-        // 再生する音声ファイルを指定する
-        let soundURL = NSBundle.mainBundle().URLForResource("sound", withExtension: "mp3")
-        do {
-            // 効果音を鳴らす
-            player = try AVAudioPlayer(contentsOfURL: soundURL!)
-            player?.play()
-        } catch {
-            print("error...")
-        }
-    }
-    
 }

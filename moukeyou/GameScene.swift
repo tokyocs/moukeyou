@@ -19,9 +19,12 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
-    var audioPlayer: AVAudioPlayer!
-    var BGMPlayer:AVAudioPlayer!
+    var aka_ie:SKSpriteNode!
+    var ao_ie:SKSpriteNode!
     
+    var audioPlayer: AVAudioPlayer!
+    var BGMPlayer: AVAudioPlayer!
+
     
     func playSound(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
@@ -77,6 +80,18 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
+        
+        self.aka_ie = SKSpriteNode(imageNamed: "ao_sita")
+        self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.aka_ie.position = CGPoint(x: 0, y: frame.maxY + 50)
+        addChild(self.aka_ie)
+        
+        self.ao_ie = SKSpriteNode(imageNamed: "ao_sita")
+        self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.ao_ie.position = CGPoint(x: 0, y: frame.maxY + 50)
+        addChild(self.ao_ie)
+        
+        
         
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")

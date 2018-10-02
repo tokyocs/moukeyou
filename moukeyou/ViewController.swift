@@ -7,16 +7,10 @@
 //
 
 import Foundation
-
 import UIKit
-
-// AVクラスをインポートする
 import AVFoundation
 
 class ViewController: UIViewController {
-    
-    var player:AVAudioPlayer?
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         // Do any additional setup after loading the view, typically from a nib.
@@ -38,5 +32,4 @@ class ViewController: UIViewController {
             print("error...")
         }
     }
-    
 }

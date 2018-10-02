@@ -20,8 +20,28 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
     var audioPlayer: AVAudioPlayer!
+    var BGMPlayer:AVAudioPlayer!
+    
     
     func playSound(name: String) {
+        guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+            print("rezi")
+            return
+        }
+        
+        do {
+            // AVBGMPlayerのインスタンス化
+            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            
+            // AVBGMPlayerのデリゲートをセット
+            audioPlayer.delegate = self
+            
+            // 音声の再生
+            audioPlayer.play()
+        } catch {
+        }
+    }
+    func playBGM(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
             print("nezumi")
             return
@@ -29,13 +49,14 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         
         do {
             // AVAudioPlayerのインスタンス化
-            audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+            BGMPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
             
             // AVAudioPlayerのデリゲートをセット
-            audioPlayer.delegate = self
+            BGMPlayer.delegate = self
+            BGMPlayer.numberOfLoops = -1
             
             // 音声の再生
-            audioPlayer.play()
+            BGMPlayer.play()
         } catch {
         }
     }
@@ -47,8 +68,11 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     
     
     override func didMove(to view: SKView) {
-        playSound(name: "nezumi")
+        playBGM(name: "nezumi")
         playSound(name: "rezi")
+        
+        
+        
         
         
         //ゲーム画面の背景色を薄緑にする
@@ -57,7 +81,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
         self.ao_ue.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_ue.position = CGPoint(x: 0, y:frame.maxY + 50)
+        self.ao_ue.position = CGPoint(x: 50, y:-30)
         addChild(self.ao_ue)
         
         self.ao_sita = SKSpriteNode(imageNamed: "ao_sita")

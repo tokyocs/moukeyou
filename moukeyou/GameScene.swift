@@ -21,7 +21,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_migi:SKSpriteNode!
     var audioPlayer: AVAudioPlayer!
 
-    var audioPlayer: AVAudioPlayer!
+    var BGMPlayer: AVAudioPlayer!
 
     
     func playSound(name: String) {

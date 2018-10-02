@@ -22,10 +22,12 @@ class GameScene: SKScene {
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
     
+    
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
     
     override func didMove(to view: SKView) {
+        
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")

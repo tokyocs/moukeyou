@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyF-Ju-PQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1125" y="-546"/>
+            <point key="canvasLocation" x="-1596" y="-546"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -122,7 +122,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ao_kati" translatesAutoresizingMaskIntoConstraints="NO" id="L39-lD-H7f">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_kati" translatesAutoresizingMaskIntoConstraints="NO" id="L39-lD-H7f">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -132,10 +132,11 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkL-Kj-t9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1295" y="-546"/>
+            <point key="canvasLocation" x="1738" y="-546"/>
         </scene>
     </scenes>
     <resources>
+        <image name="aka_kati" width="960" height="720"/>
         <image name="ao_kati" width="960" height="720"/>
         <image name="yen500" width="320" height="320"/>
     </resources>

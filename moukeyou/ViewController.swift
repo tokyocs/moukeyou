@@ -29,7 +29,7 @@ class ViewController: UIViewController {
     
     @IBAction func playSound(sender: AnyObject) {
         // 再生する音声ファイルを指定する
-        let soundURL = NSBundle.mainBundle().URLForResource("sound", withExtension: "mp3")
+        let soundURL = Bundle.mainBundle().URLForResource("sound", withExtension: "mp3")
         do {
             // 効果音を鳴らす
             player = try AVAudioPlayer(contentsOfURL: soundURL!)

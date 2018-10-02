@@ -8,6 +8,7 @@
 
 import SpriteKit
 import GameplayKit
+import AVFoundation
 
 class GameScene: SKScene {
     var ao_ue:SKSpriteNode!
@@ -21,6 +22,34 @@ class GameScene: SKScene {
     
     private var label : SKLabelNode?
     private var spinnyNode : SKShapeNode?
+    
+    class ViewController: UIViewController {
+        
+        var audioPlayer: AVAudioPlayer!
+        
+        // 省略
+        playSound(name: "nezumi")
+    }
+    extension ViewController: AVAudioPlayerDelegate {
+        func playSound(name: String) {
+            guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+                print("音源ファイルが見つかりません")
+                return
+            }
+            
+            do {
+                // AVAudioPlayerのインスタンス化
+                audioPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                
+                // AVAudioPlayerのデリゲートをセット
+                audioPlayer.delegate = self
+                
+                // 音声の再生
+                audioPlayer.play()
+            } catch {
+            }
+        }
+    }
     
     override func didMove(to view: SKView) {
         //ゲーム画面の背景色を薄緑にする

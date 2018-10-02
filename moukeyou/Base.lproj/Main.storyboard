@@ -98,7 +98,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="赤チームが勝った時" translatesAutoresizingMaskIntoConstraints="NO" id="hx1-9C-80d">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ao_kati" translatesAutoresizingMaskIntoConstraints="NO" id="hx1-9C-80d">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="779"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -122,7 +122,7 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="青チームが勝った時" translatesAutoresizingMaskIntoConstraints="NO" id="L39-lD-H7f">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ao_kati" translatesAutoresizingMaskIntoConstraints="NO" id="L39-lD-H7f">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -136,8 +136,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="ao_kati" width="960" height="720"/>
         <image name="yen500" width="320" height="320"/>
-        <image name="赤チームが勝った時" width="960" height="720"/>
-        <image name="青チームが勝った時" width="960" height="720"/>
     </resources>
 </document>

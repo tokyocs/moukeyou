@@ -14,10 +14,6 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let sound_data = NSURL(fileURLWithPath:Bundle.mainBundle().pathForResource("sumple", ofType: "mp3")!)
-        var audioPlayer: AVAudioPlayer = AVAudioPlayer(contentsOfURL: sound_data, error: nil)
-        audioPlayer.play()
-    }
+        
 }
-
-
+ }

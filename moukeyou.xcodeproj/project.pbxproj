@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		2C74E0462161A85D00D3E7CF /* nezumi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2C74E0452161A85D00D3E7CF /* nezumi.mp3 */; };
 		2C9AEFA72154C6530015976F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFA62154C6530015976F /* AppDelegate.swift */; };
 		2C9AEFA92154C6530015976F /* GameScene.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C9AEFA82154C6530015976F /* GameScene.sks */; };
 		2C9AEFAB2154C6530015976F /* Actions.sks in Resources */ = {isa = PBXBuildFile; fileRef = 2C9AEFAA2154C6530015976F /* Actions.sks */; };
@@ -39,6 +40,7 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		2C74E0452161A85D00D3E7CF /* nezumi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = nezumi.mp3; sourceTree = "<group>"; };
 		2C9AEFA32154C6530015976F /* moukeyou.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = moukeyou.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9AEFA62154C6530015976F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		2C9AEFA82154C6530015976F /* GameScene.sks */ = {isa = PBXFileReference; lastKnownFileType = file.sks; path = GameScene.sks; sourceTree = "<group>"; };
@@ -115,6 +117,8 @@
 				2C9AEFB32154C6530015976F /* Assets.xcassets */,
 				34E16B382161ADE500749FE6 /* sound.mp3 */,
 				2C9AEFB52154C6530015976F /* LaunchScreen.storyboard */,
+				2C74E0452161A85D00D3E7CF /* nezumi.mp3 */,
+				2C9AEFB82154C6530015976F /* Info.plist */,
 				34E16B34215C7E7100749FE6 /* ViewController.swift */,
 			);
 			path = moukeyou;
@@ -250,6 +254,7 @@
 				34E16B392161ADE500749FE6 /* sound.mp3 in Resources */,
 				2C9AEFB42154C6530015976F /* Assets.xcassets in Resources */,
 				2C9AEFB72154C6530015976F /* LaunchScreen.storyboard in Resources */,
+				2C74E0462161A85D00D3E7CF /* nezumi.mp3 in Resources */,
 				2C9AEFAB2154C6530015976F /* Actions.sks in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

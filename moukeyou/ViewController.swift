@@ -21,15 +21,5 @@ class ViewController: UIViewController {
         // Dispose of any resources that can be recreated.
     }
     
-    @IBAction func playSound(sender: AnyObject) {
-        // 再生する音声ファイルを指定する
-        let soundURL = Bundle.mainBundle().URLForResource("sound", withExtension: "mp3")
-        do {
-            // 効果音を鳴らす
-            player = try AVAudioPlayer(contentsOfURL: soundURL!)
-            player?.play()
-        } catch {
-            print("error...")
-        }
-    }
+    
 }

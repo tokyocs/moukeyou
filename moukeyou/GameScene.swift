@@ -83,12 +83,12 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
         //　家の表示
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
-        self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.aka_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
         self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
         addChild(self.aka_ie)
         
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
-        self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.ao_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
         self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
         addChild(self.ao_ie)
         

@@ -19,6 +19,15 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
+    var minustenyen:SKSpriteNode!
+    var minushyakuyen:SKSpriteNode!
+    var minusgohyakuyen:SKSpriteNode!
+    var goyen:SKSpriteNode!
+    var tenyen:SKSpriteNode!
+    var gojyuuyen:SKSpriteNode!
+    var hyakuyen:SKSpriteNode!
+    var gohyakuyen:SKSpriteNode!
+    
     var audioPlayer: AVAudioPlayer!
 
     var BGMPlayer: AVAudioPlayer!
@@ -114,7 +123,48 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         self.aka_migi.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.aka_migi.position = CGPoint(x: 0, y:frame.maxY + 85)
         addChild(self.aka_migi)
-
+        
+        //お客さん各種を表示
+        self.minustenyen = SKSpriteNode(imageNamed: "minustenyen")
+        self.minustenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.minustenyen.position = CGPoint(x: -40, y: 0)
+        addChild(self.minustenyen)
+        
+        self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
+        self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.minushyakuyen.position = CGPoint(x: -30, y: 0)
+        addChild(self.minushyakuyen)
+        
+        self.minusgohyakuyen = SKSpriteNode(imageNamed: "minusgohyakuyen")
+        self.minusgohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.minusgohyakuyen.position = CGPoint(x: -20, y: 0)
+        addChild(self.minusgohyakuyen)
+        
+        self.goyen = SKSpriteNode(imageNamed: "goyen")
+        self.goyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.goyen.position = CGPoint(x: -10, y: 0)
+        addChild(self.goyen)
+        
+        self.tenyen = SKSpriteNode(imageNamed: "tenyen")
+        self.tenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.tenyen.position = CGPoint(x: 30, y: 0)
+        addChild(self.tenyen)
+        
+        self.gojyuuyen = SKSpriteNode(imageNamed: "gojyuuyen")
+        self.gojyuuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.gojyuuyen.position = CGPoint(x: 20, y: 0)
+        addChild(self.gojyuuyen)
+        
+        self.hyakuyen = SKSpriteNode(imageNamed: "hyakuyen")
+        self.hyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.hyakuyen.position = CGPoint(x: 10, y: 0)
+        addChild(self.hyakuyen)
+        
+        self.gohyakuyen = SKSpriteNode(imageNamed: "gohyakuyen")
+        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        self.gohyakuyen.position = CGPoint(x: 0, y: 0)
+        addChild(self.gohyakuyen)
+        
     }
     
     

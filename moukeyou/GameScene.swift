@@ -22,10 +22,11 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
     
+    //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
 
-    
+    // これも音
     func playSound(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
             print("rezi")
@@ -63,7 +64,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         } catch {
         }
     }
-    
+    //音はここまで
     
     
     private var label : SKLabelNode?
@@ -80,15 +81,15 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
-        
-        self.aka_ie = SKSpriteNode(imageNamed: "ao_sita")
+        //　家の表示
+        self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_ie.position = CGPoint(x: 0, y: frame.maxY + 50)
+        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
         addChild(self.aka_ie)
         
-        self.ao_ie = SKSpriteNode(imageNamed: "ao_sita")
+        self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_ie.position = CGPoint(x: 0, y: frame.maxY + 50)
+        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
         addChild(self.ao_ie)
         
         

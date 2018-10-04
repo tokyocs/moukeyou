@@ -201,6 +201,52 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     }
     
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        if isPaused { return }
+        
+        // タッチされているオブジェクトから、
+        for touch: AnyObject in touches {
+            // タッチした場所を取得する。
+            let location = touch.location(in: self)
+            // タッチされたノードを選択して、ボタンと触れたかを判定する。
+            let touchNode = self.atPoint(location)
+            // 右のボタンが押されたら右に30px動かす。
+            if touchNode == aka_migi {
+                // 右に動く動きを指定する。
+                let moveToRight = SKAction.moveTo(x: self.aka_ie.position.x + 30, duration: 0.2)
+                // 右に動かす。
+                aka_ie.run(moveToRight)
+                // 左のボタンが押されたら左に30px動かす。
+            }else if touchNode == aka_hidari {
+                // 左に動く動きを指定する。
+                let moveToLeft = SKAction.moveTo(x: self.aka_ie.position.x - 30, duration: 0.2)
+                // 左に動く動きを指定する。
+                aka_ie.run(moveToLeft)
+              
+            }
+        }
+        if isPaused { return }
+        
+        // タッチされているオブジェクトから、
+        for touch: AnyObject in touches {
+            // タッチした場所を取得する。
+            let location = touch.location(in: self)
+            // タッチされたノードを選択して、ボタンと触れたかを判定する。
+            let touchNode = self.atPoint(location)
+            // 上のボタンが押されたら上に30px動かす。
+            if touchNode == aka_ue {
+                // 上に動く動きを指定する。
+                let moveToTop = SKAction.moveTo(y: self.aka_ie.position.y + 30, duration: 0.2)
+                // 上に動かす。
+                aka_ie.run(moveToTop)
+                // 下のボタンが押されたら左に30px動かす。
+            }else if touchNode == aka_sita {
+                // 下に動く動きを指定する。
+                let moveToDown = SKAction.moveTo(y: self.aka_ie.position.y - 30, duration: 0.2)
+                // 下に動く動きを指定する。
+                aka_ie.run(moveToDown)
+               
+            }
+        }
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

@@ -11,6 +11,7 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
+    var timer: Timer?
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
     var ao_ue:SKSpriteNode!
@@ -29,8 +30,6 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
-
- 
     
     //音
     var audioPlayer: AVAudioPlayer!
@@ -39,6 +38,20 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
    
+    func addAsteroid() {
+        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
+        let index = Int(arc4random_uniform(UInt32(names.count)))
+        let name = names[index]
+        let asteroid = SKSpriteNode(imageNamed: name)
+        let random = CGFloat(arc4random_uniform(UINT32_MAX)) / CGFloat(UINT32_MAX)
+        let positionX = frame.width * (random - 0.5)
+        asteroid.position = CGPoint(x: positionX, y: frame.height / 2 + asteroid.frame.height)
+        asteroid.scale(to: CGSize(width: 70, height: 70))
+        addChild(asteroid)
+        let move = SKAction.moveTo(y: -frame.height / 2 - asteroid.frame.height, duration: 20.0)
+        let remove = SKAction.removeFromParent()
+        asteroid.run(SKAction.sequence([move, remove]))
+    }
 
     // これも音
     func playSound(name: String) {

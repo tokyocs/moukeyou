@@ -95,12 +95,12 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         //　お店の表示
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_ie.position = CGPoint(x: 0, y: frame.maxY + 0)
+        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
         addChild(self.aka_ie)
         
-        self.ao_ie = SKSpriteNode(imageNamed: "ao_sita")
+        self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_ie.position = CGPoint(x: 0, y: frame.maxY + 0)
+        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
         addChild(self.ao_ie)
         
         

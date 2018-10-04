@@ -21,23 +21,23 @@
                         <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yen500" translatesAutoresizingMaskIntoConstraints="NO" id="Ruk-q8-8vK">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="Ruk-q8-8vK">
                                 <rect key="frame" x="375" y="415" width="346" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yen500" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-Pp-4rD">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="Qpp-Pp-4rD">
                                 <rect key="frame" x="566" y="415" width="346" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yen500" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-0R-aeX">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-0R-aeX">
                                 <rect key="frame" x="757" y="415" width="346" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yen500" translatesAutoresizingMaskIntoConstraints="NO" id="taU-ps-ogg">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="taU-ps-ogg">
                                 <rect key="frame" x="-33" y="415" width="346" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="yen500" translatesAutoresizingMaskIntoConstraints="NO" id="72k-gy-5lW">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="72k-gy-5lW">
                                 <rect key="frame" x="176" y="415" width="346" height="345"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -66,7 +66,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="MyF-Ju-PQT" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-1596" y="-546"/>
+            <point key="canvasLocation" x="-695" y="-546"/>
         </scene>
         <!--Game View Controller-->
         <scene sceneID="tXr-a1-R10">
@@ -138,6 +138,6 @@
     <resources>
         <image name="aka_kati" width="960" height="720"/>
         <image name="ao_kati" width="960" height="720"/>
-        <image name="yen500" width="320" height="320"/>
+        <image name="gohyakuyen" width="320" height="320"/>
     </resources>
 </document>

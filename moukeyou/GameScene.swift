@@ -37,21 +37,40 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
+    let okaneCategory: UInt32 = 0b0100
+    
    
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
         let index = Int(arc4random_uniform(UInt32(names.count)))
         let name = names[index]
-        let asteroid = SKSpriteNode(imageNamed: name)
+        let okane = SKSpriteNode(imageNamed: name)
         let random = CGFloat(arc4random_uniform(UINT32_MAX)) / CGFloat(UINT32_MAX)
         let positionX = frame.width * (random - 0.5)
-        asteroid.position = CGPoint(x: positionX, y: frame.height / 2 + asteroid.frame.height)
-        asteroid.scale(to: CGSize(width: 70, height: 70))
-        addChild(asteroid)
-        let move = SKAction.moveTo(y: -frame.height / 2 - asteroid.frame.height, duration: 20.0)
+        okane.position = CGPoint(x: positionX, y: frame.height / 2 + okane.frame.height)
+        okane.scale(to: CGSize(width: 70, height: 70))
+        okane.physicsBody = SKPhysicsBody(circleOfRadius: okane.frame.width)
+        addChild(okane)
+        let move = SKAction.moveTo(y: -frame.height / 2 - okane.frame.height, duration: 20.0)
         let remove = SKAction.removeFromParent()
-        asteroid.run(SKAction.sequence([move, remove]))
+        okane.run(SKAction.sequence([move, remove]))
     }
+    func didBegin(_ contact: SKPhysicsContact) {
+        var okane: SKPhysicsBody
+        var target: SKPhysicsBody
+        if contact.bodyA.categoryBitMask == okaneCategory {
+            okane = contact.bodyA
+            target = contact.bodyB
+            
+        } else {
+            okane = contact.bodyB
+            target = contact.bodyA
+        }
+        guard let okaneNode = okane.node else { return }
+        guard let targetNode = target.node else { return }
+        okaneNode.removeFromParent()
+    }
+
 
     // これも音
     func playSound(name: String) {
@@ -116,7 +135,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width, height: 100))
+        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 10, height: frame.width / 10))
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.collisionBitMask = 0
@@ -126,7 +145,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width, height: 100))
+        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 10, height: frame.width / 10))
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.collisionBitMask = 0

@@ -10,8 +10,7 @@ import SpriteKit
 import GameplayKit
 import AVFoundation
 
-class GameScene: SKScene,AVAudioPlayerDelegate {
-    
+class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var timer: Timer?
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
@@ -36,6 +35,9 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
     
+    let aka_ieCategory: UInt32 = 0b0001
+    let ao_ieCategory: UInt32 = 0b0010
+   
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
         let index = Int(arc4random_uniform(UInt32(names.count)))
@@ -99,6 +101,9 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     override func didMove(to view: SKView) {
         playBGM(name: "nezumi")
         playSound(name: "reji sound")
+        physicsWorld.gravity = CGVector(dx: 0, dy: 0)
+        physicsWorld.contactDelegate = self
+
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.addAsteroid()
@@ -111,11 +116,21 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
+        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width, height: 100))
+        self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
+        self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
+        self.aka_ie.physicsBody?.collisionBitMask = 0
+
         addChild(self.aka_ie)
         
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
+        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width, height: 100))
+        self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
+        self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
+        self.ao_ie.physicsBody?.collisionBitMask = 0
+
         addChild(self.ao_ie)
         
         
@@ -162,47 +177,47 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.aka_migi)
         
-        //お客さん各種を表示
-        self.minustenyen = SKSpriteNode(imageNamed: "minustenyen")
-        self.minustenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.minustenyen.position = CGPoint(x: -190, y: 0)
-        addChild(self.minustenyen)
+//        お客さん各種を表示
+//        self.minustenyen = SKSpriteNode(imageNamed: "minustenyen")
+//        self.minustenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.minustenyen.position = CGPoint(x: -190, y: 0)
+//        addChild(self.minustenyen)
         
-        self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
-        self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.minushyakuyen.position = CGPoint(x: -140, y: 0)
-        addChild(self.minushyakuyen)
-        
-        self.minusgohyakuyen = SKSpriteNode(imageNamed: "minusgohyakuyen")
-        self.minusgohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.minusgohyakuyen.position = CGPoint(x: -90, y: 0)
-        addChild(self.minusgohyakuyen)
-        
-        self.goyen = SKSpriteNode(imageNamed: "goyen")
-        self.goyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.goyen.position = CGPoint(x: -40, y: 0)
-        addChild(self.goyen)
-        
-        self.tenyen = SKSpriteNode(imageNamed: "tenyen")
-        self.tenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.tenyen.position = CGPoint(x: 160, y: 0)
-        addChild(self.tenyen)
-        
-        self.gojyuuyen = SKSpriteNode(imageNamed: "gojyuuyen")
-        self.gojyuuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.gojyuuyen.position = CGPoint(x: 110, y: 0)
-        addChild(self.gojyuuyen)
-        
-        self.hyakuyen = SKSpriteNode(imageNamed: "hyakuyen")
-        self.hyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.hyakuyen.position = CGPoint(x: 60, y: 0)
-        addChild(self.hyakuyen)
-        
-        self.gohyakuyen = SKSpriteNode(imageNamed: "gohyakuyen")
-        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
-        addChild(self.gohyakuyen)
-        
+//        self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
+//        self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.minushyakuyen.position = CGPoint(x: -140, y: 0)
+//        addChild(self.minushyakuyen)
+//        
+//        self.minusgohyakuyen = SKSpriteNode(imageNamed: "minusgohyakuyen")
+//        self.minusgohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.minusgohyakuyen.position = CGPoint(x: -90, y: 0)
+//        addChild(self.minusgohyakuyen)
+//        
+//        self.goyen = SKSpriteNode(imageNamed: "goyen")
+//        self.goyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.goyen.position = CGPoint(x: -40, y: 0)
+//        addChild(self.goyen)
+//        
+//        self.tenyen = SKSpriteNode(imageNamed: "tenyen")
+//        self.tenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.tenyen.position = CGPoint(x: 160, y: 0)
+//        addChild(self.tenyen)
+//        
+//        self.gojyuuyen = SKSpriteNode(imageNamed: "gojyuuyen")
+//        self.gojyuuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.gojyuuyen.position = CGPoint(x: 110, y: 0)
+//        addChild(self.gojyuuyen)
+//        
+//        self.hyakuyen = SKSpriteNode(imageNamed: "hyakuyen")
+//        self.hyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.hyakuyen.position = CGPoint(x: 60, y: 0)
+//        addChild(self.hyakuyen)
+//        
+//        self.gohyakuyen = SKSpriteNode(imageNamed: "gohyakuyen")
+//        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+//        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
+//        addChild(self.gohyakuyen)
+//        
     }
     
     
@@ -310,6 +325,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         }
 
     }
+    
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {
     }

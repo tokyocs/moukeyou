@@ -19,7 +19,7 @@
 		2C9AEFC22154C6540015976F /* moukeyouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFC12154C6540015976F /* moukeyouTests.swift */; };
 		2C9AEFCD2154C6540015976F /* moukeyouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFCC2154C6540015976F /* moukeyouUITests.swift */; };
 		34E16B35215C7E7100749FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E16B34215C7E7100749FE6 /* ViewController.swift */; };
-		34E16B392161ADE500749FE6 /* rezi.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E16B382161ADE500749FE6 /* rezi.mp3 */; };
+		34E16B392161ADE500749FE6 /* reji sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E16B382161ADE500749FE6 /* reji sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -57,7 +57,7 @@
 		2C9AEFCC2154C6540015976F /* moukeyouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moukeyouUITests.swift; sourceTree = "<group>"; };
 		2C9AEFCE2154C6540015976F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		34E16B34215C7E7100749FE6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
-		34E16B382161ADE500749FE6 /* rezi.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = rezi.mp3; sourceTree = "<group>"; };
+		34E16B382161ADE500749FE6 /* reji sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "reji sound.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -115,7 +115,7 @@
 				2C9AEFAE2154C6530015976F /* GameViewController.swift */,
 				2C9AEFB02154C6530015976F /* Main.storyboard */,
 				2C9AEFB32154C6530015976F /* Assets.xcassets */,
-				34E16B382161ADE500749FE6 /* rezi.mp3 */,
+				34E16B382161ADE500749FE6 /* reji sound.mp3 */,
 				2C9AEFB52154C6530015976F /* LaunchScreen.storyboard */,
 				2C74E0452161A85D00D3E7CF /* nezumi.mp3 */,
 				34E16B34215C7E7100749FE6 /* ViewController.swift */,
@@ -250,7 +250,7 @@
 			files = (
 				2C9AEFB22154C6530015976F /* Main.storyboard in Resources */,
 				2C9AEFA92154C6530015976F /* GameScene.sks in Resources */,
-				34E16B392161ADE500749FE6 /* rezi.mp3 in Resources */,
+				34E16B392161ADE500749FE6 /* reji sound.mp3 in Resources */,
 				2C9AEFB42154C6530015976F /* Assets.xcassets in Resources */,
 				2C9AEFB72154C6530015976F /* LaunchScreen.storyboard in Resources */,
 				2C74E0462161A85D00D3E7CF /* nezumi.mp3 in Resources */,

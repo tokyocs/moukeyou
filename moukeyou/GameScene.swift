@@ -83,17 +83,17 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     
     override func didMove(to view: SKView) {
         playBGM(name: "nezumi")
-        playSound(name: "rezi")
+        playSound(name: "reji sound")
         
         
         
         
         
         //ゲーム画面の背景色を薄緑にする
-        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
-
-        //　家の表示
-        self.aka_ie = SKSpriteNode(imageNamed: "ao_sita")
+        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0
+        
+        //　お店の表示
+        self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.aka_ie.position = CGPoint(x: 0, y: frame.maxY + 0)
         addChild(self.aka_ie)
@@ -150,42 +150,42 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         //お客さん各種を表示
         self.minustenyen = SKSpriteNode(imageNamed: "minustenyen")
         self.minustenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.minustenyen.position = CGPoint(x: -40, y: 0)
+        self.minustenyen.position = CGPoint(x: -190, y: 0)
         addChild(self.minustenyen)
         
         self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
         self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.minushyakuyen.position = CGPoint(x: -30, y: 0)
+        self.minushyakuyen.position = CGPoint(x: -140, y: 0)
         addChild(self.minushyakuyen)
         
         self.minusgohyakuyen = SKSpriteNode(imageNamed: "minusgohyakuyen")
         self.minusgohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.minusgohyakuyen.position = CGPoint(x: -20, y: 0)
+        self.minusgohyakuyen.position = CGPoint(x: -90, y: 0)
         addChild(self.minusgohyakuyen)
         
         self.goyen = SKSpriteNode(imageNamed: "goyen")
         self.goyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.goyen.position = CGPoint(x: -10, y: 0)
+        self.goyen.position = CGPoint(x: -40, y: 0)
         addChild(self.goyen)
         
         self.tenyen = SKSpriteNode(imageNamed: "tenyen")
         self.tenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.tenyen.position = CGPoint(x: 30, y: 0)
+        self.tenyen.position = CGPoint(x: 160, y: 0)
         addChild(self.tenyen)
         
         self.gojyuuyen = SKSpriteNode(imageNamed: "gojyuuyen")
         self.gojyuuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.gojyuuyen.position = CGPoint(x: 20, y: 0)
+        self.gojyuuyen.position = CGPoint(x: 110, y: 0)
         addChild(self.gojyuuyen)
         
         self.hyakuyen = SKSpriteNode(imageNamed: "hyakuyen")
         self.hyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.hyakuyen.position = CGPoint(x: 10, y: 0)
+        self.hyakuyen.position = CGPoint(x: 60, y: 0)
         addChild(self.hyakuyen)
         
         self.gohyakuyen = SKSpriteNode(imageNamed: "gohyakuyen")
         self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-        self.gohyakuyen.position = CGPoint(x: 0, y: 0)
+        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
         addChild(self.gohyakuyen)
         
     }

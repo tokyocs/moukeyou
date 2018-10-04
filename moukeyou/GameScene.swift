@@ -90,7 +90,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         
         
         //ゲーム画面の背景色を薄緑にする
-        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0
+        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
         
         //　お店の表示
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
@@ -101,7 +101,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         self.ao_ie = SKSpriteNode(imageNamed: "ao_sita")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ie.position = CGPoint(x: 0, y: frame.maxY + 0)
-        addChild(self.ao_ie
+        addChild(self.ao_ie)
         
         
         

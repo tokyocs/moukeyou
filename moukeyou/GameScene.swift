@@ -90,60 +90,61 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
         
         
         //ゲーム画面の背景色を薄緑にする
-        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
+        self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0
         
         //　お店の表示
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
+        self.aka_ie.position = CGPoint(x: 0, y: frame.maxY + 0)
         addChild(self.aka_ie)
         
-        self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
+        self.ao_ie = SKSpriteNode(imageNamed: "ao_sita")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        addChild(self.ao_ie)
+        self.ao_ie.position = CGPoint(x: 0, y: frame.maxY + 0)
+        addChild(self.ao_ie
         
         
         
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
-        self.ao_ue.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.ao_ue.position = CGPoint(x: 80, y: frame.maxY + 450)
+
+        self.ao_ue.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.ao_ue.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.2)
         addChild(self.ao_ue)
         
         self.ao_sita = SKSpriteNode(imageNamed: "ao_sita")
-        self.ao_sita.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.ao_sita.position = CGPoint(x: 90, y: frame.maxY + 450)
+        self.ao_sita.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.ao_sita.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 3)
         addChild(self.ao_sita)
 
         self.ao_hidari = SKSpriteNode(imageNamed: "ao_hidari")
-        self.ao_hidari.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.ao_hidari.position = CGPoint(x: 85, y:frame.maxY + 425)
+        self.ao_hidari.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.ao_hidari.position = CGPoint(x: frame.midX + view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.ao_hidari)
         
         self.ao_migi = SKSpriteNode(imageNamed: "ao_migi")
-        self.ao_migi.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.ao_migi.position = CGPoint(x: 85, y:frame.maxY + 475)
+        self.ao_migi.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.ao_migi.position = CGPoint(x: frame.midX + view.frame.size.width / 3.1, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.ao_migi)
        
         self.aka_ue = SKSpriteNode(imageNamed: "aka_ue")
-        self.aka_ue.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.aka_ue.position = CGPoint(x: 80, y:frame.maxY + 50)
+        self.aka_ue.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.aka_ue.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.2)
         addChild(self.aka_ue)
         
         self.aka_sita = SKSpriteNode(imageNamed: "aka_sita")
-        self.aka_sita.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.aka_sita.position = CGPoint(x: 90, y:frame.maxY + 50)
+        self.aka_sita.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.aka_sita.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 3)
         addChild(self.aka_sita)
         
         self.aka_hidari = SKSpriteNode(imageNamed: "aka_hidari")
-        self.aka_hidari.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.aka_hidari.position = CGPoint(x: 85, y:frame.maxY + 25)
+        self.aka_hidari.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.aka_hidari.position = CGPoint(x: frame.midX - view.frame.size.width / 3.1, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.aka_hidari)
         
         self.aka_migi = SKSpriteNode(imageNamed: "aka_migi")
-        self.aka_migi.scale(to: CGSize(width: frame.width / 100, height: frame.width / 500))
-        self.aka_migi.position = CGPoint(x: 85, y:frame.maxY + 75)
+        self.aka_migi.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.aka_migi)
         
         //お客さん各種を表示

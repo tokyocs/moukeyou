@@ -13,7 +13,6 @@ import AVFoundation
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
-    
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
     var ao_hidari:SKSpriteNode!
@@ -34,7 +33,6 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
  
     
     //音
-
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
     
@@ -94,9 +92,9 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         physicsWorld.contactDelegate = self
 
         
-        
-        
-        
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            self.addAsteroid()
+        })
         
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)

@@ -11,6 +11,9 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene,AVAudioPlayerDelegate {
+    var aka_ie:SKSpriteNode!
+    var ao_ie:SKSpriteNode!
+    
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
     var ao_hidari:SKSpriteNode!
@@ -28,8 +31,6 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
  
-    var aka_ie:SKSpriteNode!
-    var ao_ie:SKSpriteNode!
     
     //音
 
@@ -247,6 +248,53 @@ class GameScene: SKScene,AVAudioPlayerDelegate {
                
             }
         }
+        if isPaused { return }
+        
+        // タッチされているオブジェクトから、
+        for touch: AnyObject in touches {
+            // タッチした場所を取得する。
+            let location = touch.location(in: self)
+            // タッチされたノードを選択して、ボタンと触れたかを判定する。
+            let touchNode = self.atPoint(location)
+            // 右のボタンが押されたら右に30px動かす。
+            if touchNode == ao_migi {
+                // 右に動く動きを指定する。
+                let moveToRight = SKAction.moveTo(x: self.ao_ie.position.x + 30, duration: 0.2)
+                // 右に動かす。
+                ao_ie.run(moveToRight)
+                // 左のボタンが押されたら左に30px動かす。
+            }else if touchNode == ao_hidari {
+                // 左に動く動きを指定する。
+                let moveToLeft = SKAction.moveTo(x: self.ao_ie.position.x - 30, duration: 0.2)
+                // 左に動く動きを指定する。
+                ao_ie.run(moveToLeft)
+                
+            }
+        }
+        if isPaused { return }
+        
+        // タッチされているオブジェクトから、
+        for touch: AnyObject in touches {
+            // タッチした場所を取得する。
+            let location = touch.location(in: self)
+            // タッチされたノードを選択して、ボタンと触れたかを判定する。
+            let touchNode = self.atPoint(location)
+            // 上のボタンが押されたら上に30px動かす。
+            if touchNode == ao_ue {
+                // 上に動く動きを指定する。
+                let moveToTop = SKAction.moveTo(y: self.ao_ie.position.y + 30, duration: 0.2)
+                // 上に動かす。
+                ao_ie.run(moveToTop)
+                // 下のボタンが押されたら左に30px動かす。
+            }else if touchNode == ao_sita {
+                // 下に動く動きを指定する。
+                let moveToDown = SKAction.moveTo(y: self.ao_ie.position.y - 30, duration: 0.2)
+                // 下に動く動きを指定する。
+                ao_ie.run(moveToDown)
+                
+            }
+        }
+
     }
     
     override func touchesMoved(_ touches: Set<UITouch>, with event: UIEvent?) {

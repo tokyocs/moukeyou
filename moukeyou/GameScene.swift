@@ -11,7 +11,6 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
-    
     var timer: Timer?
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
@@ -31,8 +30,18 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
+    
+    //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
+    //音
+    var audioPlayer: AVAudioPlayer!
+    var BGMPlayer: AVAudioPlayer!
+    
+    let aka_ieCategory: UInt32 = 0b0001
+    let ao_ieCategory: UInt32 = 0b0010
+    let okaneCategory: UInt32 = 0b0100
+    
     
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
@@ -43,6 +52,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         let positionX = frame.width * (random - 0.5)
         okane.position = CGPoint(x: positionX, y: frame.height / 2 + okane.frame.height)
         okane.scale(to: CGSize(width: 70, height: 70))
+        okane.physicsBody = SKPhysicsBody(circleOfRadius: okane.frame.width)
         addChild(okane)
         let move = SKAction.moveTo(y: -frame.height / 2 - okane.frame.height, duration: 20.0)
         let remove = SKAction.removeFromParent()
@@ -51,7 +61,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         var okane: SKPhysicsBody
         var target: SKPhysicsBody
-        if contact.bodyA.categoryBitMask == aka_ieCategory {
+        if contact.bodyA.categoryBitMask == okaneCategory {
             okane = contact.bodyA
             target = contact.bodyB
             
@@ -63,18 +73,12 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         guard let targetNode = target.node else { return }
         okaneNode.removeFromParent()
     }
-
-    //音
-    var audioPlayer: AVAudioPlayer!
-    var BGMPlayer: AVAudioPlayer!
     
-    let aka_ieCategory: UInt32 = 0b0001
-    let ao_ieCategory: UInt32 = 0b0010
-   
+    
     // これも音
     func playSound(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
-            print("reji")
+            print("rezi")
             return
         }
         
@@ -121,7 +125,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         playSound(name: "reji sound")
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
-
+        
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.addAsteroid()
@@ -138,7 +142,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.collisionBitMask = 0
-
+        
         addChild(self.aka_ie)
         
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
@@ -148,14 +152,14 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.collisionBitMask = 0
-
+        
         addChild(self.ao_ie)
         
         
         
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
-
+        
         self.ao_ue.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
         self.ao_ue.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.2)
         addChild(self.ao_ue)
@@ -164,7 +168,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_sita.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
         self.ao_sita.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 3)
         addChild(self.ao_sita)
-
+        
         self.ao_hidari = SKSpriteNode(imageNamed: "ao_hidari")
         self.ao_hidari.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
         self.ao_hidari.position = CGPoint(x: frame.midX + view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
@@ -174,7 +178,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_migi.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
         self.ao_migi.position = CGPoint(x: frame.midX + view.frame.size.width / 3.1, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.ao_migi)
-       
+        
         self.aka_ue = SKSpriteNode(imageNamed: "aka_ue")
         self.aka_ue.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
         self.aka_ue.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.2)
@@ -195,47 +199,47 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
         addChild(self.aka_migi)
         
-//        お客さん各種を表示
-//        self.minustenyen = SKSpriteNode(imageNamed: "minustenyen")
-//        self.minustenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.minustenyen.position = CGPoint(x: -190, y: 0)
-//        addChild(self.minustenyen)
+        //        お客さん各種を表示
+        //        self.minustenyen = SKSpriteNode(imageNamed: "minustenyen")
+        //        self.minustenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.minustenyen.position = CGPoint(x: -190, y: 0)
+        //        addChild(self.minustenyen)
         
-//        self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
-//        self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.minushyakuyen.position = CGPoint(x: -140, y: 0)
-//        addChild(self.minushyakuyen)
-//        
-//        self.minusgohyakuyen = SKSpriteNode(imageNamed: "minusgohyakuyen")
-//        self.minusgohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.minusgohyakuyen.position = CGPoint(x: -90, y: 0)
-//        addChild(self.minusgohyakuyen)
-//        
-//        self.goyen = SKSpriteNode(imageNamed: "goyen")
-//        self.goyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.goyen.position = CGPoint(x: -40, y: 0)
-//        addChild(self.goyen)
-//        
-//        self.tenyen = SKSpriteNode(imageNamed: "tenyen")
-//        self.tenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.tenyen.position = CGPoint(x: 160, y: 0)
-//        addChild(self.tenyen)
-//        
-//        self.gojyuuyen = SKSpriteNode(imageNamed: "gojyuuyen")
-//        self.gojyuuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.gojyuuyen.position = CGPoint(x: 110, y: 0)
-//        addChild(self.gojyuuyen)
-//        
-//        self.hyakuyen = SKSpriteNode(imageNamed: "hyakuyen")
-//        self.hyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.hyakuyen.position = CGPoint(x: 60, y: 0)
-//        addChild(self.hyakuyen)
-//        
-//        self.gohyakuyen = SKSpriteNode(imageNamed: "gohyakuyen")
-//        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
-//        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
-//        addChild(self.gohyakuyen)
-//        
+        //        self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
+        //        self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.minushyakuyen.position = CGPoint(x: -140, y: 0)
+        //        addChild(self.minushyakuyen)
+        //
+        //        self.minusgohyakuyen = SKSpriteNode(imageNamed: "minusgohyakuyen")
+        //        self.minusgohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.minusgohyakuyen.position = CGPoint(x: -90, y: 0)
+        //        addChild(self.minusgohyakuyen)
+        //
+        //        self.goyen = SKSpriteNode(imageNamed: "goyen")
+        //        self.goyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.goyen.position = CGPoint(x: -40, y: 0)
+        //        addChild(self.goyen)
+        //
+        //        self.tenyen = SKSpriteNode(imageNamed: "tenyen")
+        //        self.tenyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.tenyen.position = CGPoint(x: 160, y: 0)
+        //        addChild(self.tenyen)
+        //
+        //        self.gojyuuyen = SKSpriteNode(imageNamed: "gojyuuyen")
+        //        self.gojyuuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.gojyuuyen.position = CGPoint(x: 110, y: 0)
+        //        addChild(self.gojyuuyen)
+        //
+        //        self.hyakuyen = SKSpriteNode(imageNamed: "hyakuyen")
+        //        self.hyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.hyakuyen.position = CGPoint(x: 60, y: 0)
+        //        addChild(self.hyakuyen)
+        //
+        //        self.gohyakuyen = SKSpriteNode(imageNamed: "gohyakuyen")
+        //        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
+        //        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
+        //        addChild(self.gohyakuyen)
+        //
     }
     
     
@@ -271,68 +275,68 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
                 ao_yazirushi = 4
             }
         }
-
         
         
-//        if isPaused { return }
-//        
-//        // タッチされているオブジェクトから、
-//        for touch: AnyObject in touches {
-//            // タッチした場所を取得する。
-//            let location = touch.location(in: self)
-//            // タッチされたノードを選択して、ボタンと触れたかを判定する。
-//            let touchNode = self.atPoint(location)
-//            // 右のボタンが押されたら右に30px動かす。
-//            if touchNode == aka_migi {
-//                // 右に動く動きを指定する。
-//                let moveToRight = SKAction.moveTo(x: self.aka_ie.position.x + 30, duration: 0.2)
-//                // 右に動かす。
-//                aka_ie.run(moveToRight)
-//                // 左のボタンが押されたら左に30px動かす。
-//            }else if touchNode == aka_hidari {
-//                // 左に動く動きを指定する。
-//                let moveToLeft = SKAction.moveTo(x: self.aka_ie.position.x - 30, duration: 0.2)
-//                // 左に動く動きを指定する。
-//                aka_ie.run(moveToLeft)
-//
-//            }else if touchNode == aka_ue {
-//                // 上に動く動きを指定する。
-//                let moveToTop = SKAction.moveTo(y: self.aka_ie.position.y + 30, duration: 0.2)
-//                // 上に動かす。
-//                aka_ie.run(moveToTop)
-//                // 下のボタンが押されたら左に30px動かす。
-//            }else if touchNode == aka_sita {
-//                // 下に動く動きを指定する。
-//                let moveToDown = SKAction.moveTo(y: self.aka_ie.position.y - 30, duration: 0.2)
-//                // 下に動く動きを指定する。
-//                aka_ie.run(moveToDown)
-//               
-//            }else if touchNode == ao_migi {
-//                // 右に動く動きを指定する。
-//                let moveToRight = SKAction.moveTo(x: self.ao_ie.position.x + 30, duration: 0.2)
-//                // 右に動かす。
-//                ao_ie.run(moveToRight)
-//                // 左のボタンが押されたら左に30px動かす。
-//            }else if touchNode == ao_hidari {
-//                // 左に動く動きを指定する。
-//                let moveToLeft = SKAction.moveTo(x: self.ao_ie.position.x - 30, duration: 0.2)
-//                // 左に動く動きを指定する。
-//                ao_ie.run(moveToLeft)
-//                
-//            }else if touchNode == ao_ue {
-//                // 上に動く動きを指定する。
-//                let moveToTop = SKAction.moveTo(y: self.ao_ie.position.y + 30, duration: 0.2)
-//                // 上に動かす。
-//                ao_ie.run(moveToTop)
-//                // 下のボタンが押されたら左に30px動かす。
-//            }else if touchNode == ao_sita {
-//                // 下に動く動きを指定する。
-//                let moveToDown = SKAction.moveTo(y: self.ao_ie.position.y - 30, duration: 0.2)
-//                // 下に動く動きを指定する。
-//                ao_ie.run(moveToDown)
-//                
-//            }
-//        }
+        
+        //        if isPaused { return }
+        //
+        //        // タッチされているオブジェクトから、
+        //        for touch: AnyObject in touches {
+        //            // タッチした場所を取得する。
+        //            let location = touch.location(in: self)
+        //            // タッチされたノードを選択して、ボタンと触れたかを判定する。
+        //            let touchNode = self.atPoint(location)
+        //            // 右のボタンが押されたら右に30px動かす。
+        //            if touchNode == aka_migi {
+        //                // 右に動く動きを指定する。
+        //                let moveToRight = SKAction.moveTo(x: self.aka_ie.position.x + 30, duration: 0.2)
+        //                // 右に動かす。
+        //                aka_ie.run(moveToRight)
+        //                // 左のボタンが押されたら左に30px動かす。
+        //            }else if touchNode == aka_hidari {
+        //                // 左に動く動きを指定する。
+        //                let moveToLeft = SKAction.moveTo(x: self.aka_ie.position.x - 30, duration: 0.2)
+        //                // 左に動く動きを指定する。
+        //                aka_ie.run(moveToLeft)
+        //
+        //            }else if touchNode == aka_ue {
+        //                // 上に動く動きを指定する。
+        //                let moveToTop = SKAction.moveTo(y: self.aka_ie.position.y + 30, duration: 0.2)
+        //                // 上に動かす。
+        //                aka_ie.run(moveToTop)
+        //                // 下のボタンが押されたら左に30px動かす。
+        //            }else if touchNode == aka_sita {
+        //                // 下に動く動きを指定する。
+        //                let moveToDown = SKAction.moveTo(y: self.aka_ie.position.y - 30, duration: 0.2)
+        //                // 下に動く動きを指定する。
+        //                aka_ie.run(moveToDown)
+        //
+        //            }else if touchNode == ao_migi {
+        //                // 右に動く動きを指定する。
+        //                let moveToRight = SKAction.moveTo(x: self.ao_ie.position.x + 30, duration: 0.2)
+        //                // 右に動かす。
+        //                ao_ie.run(moveToRight)
+        //                // 左のボタンが押されたら左に30px動かす。
+        //            }else if touchNode == ao_hidari {
+        //                // 左に動く動きを指定する。
+        //                let moveToLeft = SKAction.moveTo(x: self.ao_ie.position.x - 30, duration: 0.2)
+        //                // 左に動く動きを指定する。
+        //                ao_ie.run(moveToLeft)
+        //
+        //            }else if touchNode == ao_ue {
+        //                // 上に動く動きを指定する。
+        //                let moveToTop = SKAction.moveTo(y: self.ao_ie.position.y + 30, duration: 0.2)
+        //                // 上に動かす。
+        //                ao_ie.run(moveToTop)
+        //                // 下のボタンが押されたら左に30px動かす。
+        //            }else if touchNode == ao_sita {
+        //                // 下に動く動きを指定する。
+        //                let moveToDown = SKAction.moveTo(y: self.ao_ie.position.y - 30, duration: 0.2)
+        //                // 下に動く動きを指定する。
+        //                ao_ie.run(moveToDown)
+        //
+        //            }
+        //        }
     }
     
     
@@ -371,11 +375,11 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         if aka_yazirushi == 1{
             let moveToTop = SKAction.moveTo(y: self.aka_ie.position.y + 30, duration: 0.2)
             aka_ie.run(moveToTop)
-
+            
         }else if aka_yazirushi == 2{
             let moveToRight = SKAction.moveTo(x: self.aka_ie.position.x + 30, duration: 0.2)
             aka_ie.run(moveToRight)
-
+            
         }else if aka_yazirushi == 3{
             let moveToDown = SKAction.moveTo(y: self.aka_ie.position.y - 30, duration: 0.2)
             aka_ie.run(moveToDown)

@@ -31,6 +31,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
     
+    //スコア
+    
     //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!

@@ -31,6 +31,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
+    var aka_yazirushi:Int = 0
+    var ao_yazirushi:Int = 0
     
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
@@ -39,17 +41,17 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         let okane = SKSpriteNode(imageNamed: name)
         let random = CGFloat(arc4random_uniform(UINT32_MAX)) / CGFloat(UINT32_MAX)
         let positionX = frame.width * (random - 0.5)
-        asteroid.position = CGPoint(x: positionX, y: frame.height / 2 + asteroid.frame.height)
-        asteroid.scale(to: CGSize(width: 70, height: 70))
-        addChild(asteroid)
-        let move = SKAction.moveTo(y: -frame.height / 2 - asteroid.frame.height, duration: 6.0)
+        okane.position = CGPoint(x: positionX, y: frame.height / 2 + okane.frame.height)
+        okane.scale(to: CGSize(width: 70, height: 70))
+        addChild(okane)
+        let move = SKAction.moveTo(y: -frame.height / 2 - okane.frame.height, duration: 20.0)
         let remove = SKAction.removeFromParent()
         okane.run(SKAction.sequence([move, remove]))
     }
     func didBegin(_ contact: SKPhysicsContact) {
         var okane: SKPhysicsBody
         var target: SKPhysicsBody
-        if contact.bodyA.categoryBitMask == okaneCategory {
+        if contact.bodyA.categoryBitMask == aka_ieCategory {
             okane = contact.bodyA
             target = contact.bodyB
             

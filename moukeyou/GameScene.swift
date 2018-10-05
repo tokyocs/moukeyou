@@ -388,7 +388,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         }else if aka_yazirushi == 4{
             let moveToLeft = SKAction.moveTo(x: self.aka_ie.position.x - 30, duration: 0.2)
             aka_ie.run(moveToLeft)
-        }else if ao_yazirushi == 1{
+        }
+        if ao_yazirushi == 1{
             let moveToTop = SKAction.moveTo(y: self.ao_ie.position.y + 30, duration: 0.2)
             ao_ie.run(moveToTop)
             

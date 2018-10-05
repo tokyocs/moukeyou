@@ -355,7 +355,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
                 aka_yazirushi = 0
             }else if touchNode == aka_hidari {
                 aka_yazirushi = 0
-            }else if touchNode == ao_ue {
+            }
+            if touchNode == ao_ue {
                 ao_yazirushi = 0
             }else if touchNode == ao_migi {
                 ao_yazirushi = 0

@@ -30,10 +30,11 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
-    
+   
     //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
+
     //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!

@@ -159,44 +159,43 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
-        
-        self.ao_ue.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
-        self.ao_ue.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.2)
+        self.ao_ue.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
+        self.ao_ue.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.9)
         addChild(self.ao_ue)
         
         self.ao_sita = SKSpriteNode(imageNamed: "ao_sita")
-        self.ao_sita.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.ao_sita.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
         self.ao_sita.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 3)
         addChild(self.ao_sita)
         
         self.ao_hidari = SKSpriteNode(imageNamed: "ao_hidari")
-        self.ao_hidari.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
-        self.ao_hidari.position = CGPoint(x: frame.midX + view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
+        self.ao_hidari.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
+        self.ao_hidari.position = CGPoint(x: frame.midX + view.frame.size.width / 4.2, y: frame.midY - view.frame.size.height / 3.7)
         addChild(self.ao_hidari)
         
         self.ao_migi = SKSpriteNode(imageNamed: "ao_migi")
-        self.ao_migi.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
-        self.ao_migi.position = CGPoint(x: frame.midX + view.frame.size.width / 3.1, y: frame.midY - view.frame.size.height / 3.5)
+        self.ao_migi.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
+        self.ao_migi.position = CGPoint(x: frame.midX + view.frame.size.width / 3, y: frame.midY - view.frame.size.height / 3.7)
         addChild(self.ao_migi)
         
         self.aka_ue = SKSpriteNode(imageNamed: "aka_ue")
-        self.aka_ue.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
-        self.aka_ue.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.2)
+        self.aka_ue.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
+        self.aka_ue.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 4.9)
         addChild(self.aka_ue)
         
         self.aka_sita = SKSpriteNode(imageNamed: "aka_sita")
-        self.aka_sita.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
+        self.aka_sita.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
         self.aka_sita.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY - view.frame.size.height / 3)
         addChild(self.aka_sita)
         
         self.aka_hidari = SKSpriteNode(imageNamed: "aka_hidari")
-        self.aka_hidari.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
-        self.aka_hidari.position = CGPoint(x: frame.midX - view.frame.size.width / 3.1, y: frame.midY - view.frame.size.height / 3.5)
+        self.aka_hidari.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
+        self.aka_hidari.position = CGPoint(x: frame.midX - view.frame.size.width / 3, y: frame.midY - view.frame.size.height / 3.7)
         addChild(self.aka_hidari)
         
         self.aka_migi = SKSpriteNode(imageNamed: "aka_migi")
-        self.aka_migi.scale(to: CGSize(width: frame.width / 20, height: frame.width / 20))
-        self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 4, y: frame.midY - view.frame.size.height / 3.5)
+        self.aka_migi.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
+        self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 4.2, y: frame.midY - view.frame.size.height / 3.7)
         addChild(self.aka_migi)
         
         //        お客さん各種を表示

@@ -11,6 +11,7 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
+    
     var timer: Timer?
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
@@ -30,19 +31,9 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
-    
-    //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
-    //音
-    var audioPlayer: AVAudioPlayer!
-    var BGMPlayer: AVAudioPlayer!
     
-    let aka_ieCategory: UInt32 = 0b0001
-    let ao_ieCategory: UInt32 = 0b0010
-    let okaneCategory: UInt32 = 0b0100
-    
-   
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
         let index = Int(arc4random_uniform(UInt32(names.count)))
@@ -52,7 +43,6 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         let positionX = frame.width * (random - 0.5)
         okane.position = CGPoint(x: positionX, y: frame.height / 2 + okane.frame.height)
         okane.scale(to: CGSize(width: 70, height: 70))
-        okane.physicsBody = SKPhysicsBody(circleOfRadius: okane.frame.width)
         addChild(okane)
         let move = SKAction.moveTo(y: -frame.height / 2 - okane.frame.height, duration: 20.0)
         let remove = SKAction.removeFromParent()
@@ -61,7 +51,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     func didBegin(_ contact: SKPhysicsContact) {
         var okane: SKPhysicsBody
         var target: SKPhysicsBody
-        if contact.bodyA.categoryBitMask == okaneCategory {
+        if contact.bodyA.categoryBitMask == aka_ieCategory {
             okane = contact.bodyA
             target = contact.bodyB
             
@@ -74,11 +64,17 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         okaneNode.removeFromParent()
     }
 
-
+    //音
+    var audioPlayer: AVAudioPlayer!
+    var BGMPlayer: AVAudioPlayer!
+    
+    let aka_ieCategory: UInt32 = 0b0001
+    let ao_ieCategory: UInt32 = 0b0010
+   
     // これも音
     func playSound(name: String) {
         guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
-            print("rezi")
+            print("reji")
             return
         }
         

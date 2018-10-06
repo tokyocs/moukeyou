@@ -11,9 +11,12 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
+    // 人を降らせる
     var timer: Timer?
+    // 店
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
+    // 矢印
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
     var ao_hidari:SKSpriteNode!
@@ -22,15 +25,16 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
+    // マイナスの人
     var minustenyen:SKSpriteNode!
     var minushyakuyen:SKSpriteNode!
     var minusgohyakuyen:SKSpriteNode!
+    // 増やしてくれる人
     var goyen:SKSpriteNode!
     var tenyen:SKSpriteNode!
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
-   
     //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
@@ -42,6 +46,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
     let okaneCategory: UInt32 = 0b0100
+    let bigCategory: UInt32 = 0b1000
     
     
     func addAsteroid() {
@@ -74,7 +79,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         guard let targetNode = target.node else { return }
         okaneNode.removeFromParent()
         playSound(name: "reji sound")
-    }
+        }
+    
     
     
     // これも音

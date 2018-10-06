@@ -13,9 +13,6 @@ import AVFoundation
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     // 人を降らせる
     var timer: Timer?
-    // 店
-    var aka_ie:SKSpriteNode!
-    var ao_ie:SKSpriteNode!
     // 矢印
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
@@ -42,7 +39,10 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
-    
+    // 店
+    var aka_ie:SKSpriteNode!
+    var ao_ie:SKSpriteNode!
+
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
     let okaneCategory: UInt32 = 0b0100

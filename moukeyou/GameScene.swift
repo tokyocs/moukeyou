@@ -30,7 +30,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
-   
+    var score:SKSpriteNode!
+    
     //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
@@ -70,6 +71,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             okane = contact.bodyB
             target = contact.bodyA
         }
+        //スコア
+        score += 5
         guard let okaneNode = okane.node else { return }
         guard let targetNode = target.node else { return }
         okaneNode.removeFromParent()

@@ -15,28 +15,25 @@ class GameViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        let label = UILabel()
-        label.text = "score"
-        label.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
-        label.font = UIFont(name: "HiraMinProN-W3", size: 25)
-        label.sizeToFit()
-        label.frame.size = CGSize(width: 300, height: 45)
-        label.center = self.view.center
-        self.view.addSubview(label)
-        for family in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: family) {
-                print(fontName)
-            }
-        }
-        label.backgroundColor = UIColor.white // 背景を白に変更
-        label.textColor = UIColor.red // 文字色を赤に変更
-            
-        
-        label.center = CGPoint(x: 160, y: 30) // UILabelの中央座標を (150, 100) にする
-        
-        label.text = "所持金:0\n2行目"
-        label.numberOfLines = 0
- 
+//        let label = UILabel()
+//        label.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
+//        label.font = UIFont(name: "HiraMinProN-W3", size: 25)
+//        label.sizeToFit()
+//        label.frame.size = CGSize(width: 300, height: 45)
+//        label.center = self.view.center
+//        self.view.addSubview(label)
+//        for family in UIFont.familyNames {
+//            for fontName in UIFont.fontNames(forFamilyName: family) {
+//                print(fontName)
+//            }
+//        }
+//        label.backgroundColor = UIColor.white // 背景を白に変更
+//        label.textColor = UIColor.red // 文字色を赤に変更
+//        
+//        label.center = CGPoint(x: 160, y: 30) // UILabelの中央座標を (150, 100) にする
+//        label.text = "所持金:0\n2行目"
+        //数値を加算
+        print(1 + 1) //2
         
         let label2 = UILabel()
         label2.text = "score"

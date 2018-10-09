@@ -13,6 +13,14 @@ import AVFoundation
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     // 人を降らせる
     var timer: Timer?
+    //残りの時間
+    var timer2: Timer?
+    //残りの時間の表示用
+    var timer3: Int = 60 {
+        didSet {
+            timerLabel.text = "残り時間: \(timer3)"
+        }
+    }
     // 矢印
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
@@ -49,7 +57,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     
     //タイマー
     var nokorijikan:Int = 60
-
+    var timerLabel: SKLabelNode!
+    
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
     let okaneCategory: UInt32 = 0b0100
@@ -141,30 +150,14 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
-        let label3 = UILabel()
-        label3.text = "score"
-        label3.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
-        label3.font = UIFont(name: "HiraMinProN-W3", size: 25)
-        label3.sizeToFit()
-        label3.frame.size = CGSize(width: 300, height: 45)
-        label3.center = (self.view?.center)!
-        self.view?.addSubview(label3)
-        for family in UIFont.familyNames {
-            for fontName in UIFont.fontNames(forFamilyName: family) {
-                print(fontName)
-            }
-        }
-        label3.backgroundColor = UIColor.white // 背景を白に変更
-        label3.textColor = UIColor.black // 文字色を黒に変更
-        
-        // UILabelの中央座標を (0, 0) にする
-        label3.center = CGPoint(x:frame.midX + view.frame.size.width/2, y:frame.midY + 30)
-        
-        label3.text = "残り時間:0\n2行目"
-        label3.numberOfLines = 0
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.addAsteroid()
+        })
+        
+        //残りの時間を減らす
+        timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            self.timer3 = self.timer3 - 1
         })
         
         //ゲーム画面の背景色を薄緑にする
@@ -274,7 +267,13 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         //        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
         //        addChild(self.gohyakuyen)
-        //
+        
+        timerLabel = SKLabelNode(text: "残り時間: 0")
+        timerLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+        timerLabel.fontName = "Papyrus"
+        timerLabel.fontSize = 30
+        timerLabel.position = CGPoint(x:0, y: 245)
+        addChild(timerLabel)
     }
     
     

@@ -11,9 +11,9 @@ import GameplayKit
 import AVFoundation
 
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
+    // 人を降らせる
     var timer: Timer?
-    var aka_ie:SKSpriteNode!
-    var ao_ie:SKSpriteNode!
+    // 矢印
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
     var ao_hidari:SKSpriteNode!
@@ -22,9 +22,11 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
+    // マイナスの人
     var minustenyen:SKSpriteNode!
     var minushyakuyen:SKSpriteNode!
     var minusgohyakuyen:SKSpriteNode!
+    // 増やしてくれる人
     var goyen:SKSpriteNode!
     var tenyen:SKSpriteNode!
     var gojyuuyen:SKSpriteNode!
@@ -39,14 +41,18 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
-    
+    // 店
+    var aka_ie:SKSpriteNode!
+    var ao_ie:SKSpriteNode!
+
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
     let okaneCategory: UInt32 = 0b0100
+    let bigCategory: UInt32 = 0b1000
     
     
     func addAsteroid() {
-        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen"]
+        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small"]
         let index = Int(arc4random_uniform(UInt32(names.count)))
         let name = names[index]
         let okane = SKSpriteNode(imageNamed: name)
@@ -76,7 +82,9 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         guard let okaneNode = okane.node else { return }
         guard let targetNode = target.node else { return }
         okaneNode.removeFromParent()
-    }
+        playSound(name: "reji sound")
+        }
+    
     
     
     // これも音
@@ -142,7 +150,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 10, height: frame.width / 10))
+        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 30, height: frame.width / 30))
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.collisionBitMask = 0
@@ -152,7 +160,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 10, height: frame.width / 10))
+        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 30, height: frame.width / 30))
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.collisionBitMask = 0
@@ -358,7 +366,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
                 aka_yazirushi = 0
             }else if touchNode == aka_hidari {
                 aka_yazirushi = 0
-            }else if touchNode == ao_ue {
+            }
+            if touchNode == ao_ue {
                 ao_yazirushi = 0
             }else if touchNode == ao_migi {
                 ao_yazirushi = 0
@@ -390,7 +399,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         }else if aka_yazirushi == 4{
             let moveToLeft = SKAction.moveTo(x: self.aka_ie.position.x - 30, duration: 0.2)
             aka_ie.run(moveToLeft)
-        }else if ao_yazirushi == 1{
+        }
+        if ao_yazirushi == 1{
             let moveToTop = SKAction.moveTo(y: self.ao_ie.position.y + 30, duration: 0.2)
             ao_ie.run(moveToTop)
             

@@ -42,7 +42,22 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
+
+    //赤
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "所持金: \(score)"
+        }
+    }
+    //青
+    var score2: Int = 0 {
+        didSet {
+            scoreLabel2.text = "所持金: \(score2)"
+        }
+    }
+
     
+
     //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
@@ -63,7 +78,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     let ao_ieCategory: UInt32 = 0b0010
     let okaneCategory: UInt32 = 0b0100
     let bigCategory: UInt32 = 0b1000
-    
+    var scoreLabel: SKLabelNode!
+    var scoreLabel2: SKLabelNode!
     
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small"]
@@ -92,6 +108,16 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             target = contact.bodyA
         }
         guard let okaneNode = okane.node else { return }
+
+        guard let targetNode = target.node else { return }
+        if target.categoryBitMask == aka_ieCategory {
+            score += 5
+        }
+        
+        if target.categoryBitMask == ao_ieCategory {
+            score2 += 5
+        }
+
         guard target.node != nil else { return }
         okaneNode.removeFromParent()
         playSound(name: "reji sound")
@@ -267,6 +293,27 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         //        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
         //        addChild(self.gohyakuyen)
+
+        //赤の得点表
+        scoreLabel = SKLabelNode(text:"所持金:0\n2行目" )
+        //        scoreLabel.fontName = "HiraMinProN-W3"
+        scoreLabel.fontName = "Papyrus"
+        scoreLabel.fontSize = 25
+        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
+
+        addChild(scoreLabel)
+
+        //青の得点表
+        scoreLabel2 = SKLabelNode(text:"所持金:0\n2行目" )
+        //        scoreLabel2.fontName = "HiraMinProN-W3"
+        scoreLabel2.fontName = "Papyrus"
+        scoreLabel2.fontSize = 25
+        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.6, y: frame.midY -
+            view.frame.size.height / 8)
+        addChild(scoreLabel2)
+
+    
+
         
         timerLabel = SKLabelNode(text: "残り時間: 0")
         timerLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
@@ -274,6 +321,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         timerLabel.fontSize = 30
         timerLabel.position = CGPoint(x:0, y: 245)
         addChild(timerLabel)
+
     }
     
     

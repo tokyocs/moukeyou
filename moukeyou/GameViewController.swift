@@ -56,6 +56,7 @@ class GameViewController: UIViewController {
         label2.text = "所持金:0\n2行目"
         label2.numberOfLines = 0
         
+        
             if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'
             if let scene = SKScene(fileNamed: "GameScene") {

@@ -22,16 +22,19 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
+    
     // マイナスの人
     var minustenyen:SKSpriteNode!
     var minushyakuyen:SKSpriteNode!
     var minusgohyakuyen:SKSpriteNode!
+    
     // 増やしてくれる人
     var goyen:SKSpriteNode!
     var tenyen:SKSpriteNode!
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
+    
     //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
@@ -39,9 +42,13 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
+    
     // 店
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
+    
+    //タイマー
+    var nokorijikan:Int = 60
 
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
@@ -76,7 +83,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             target = contact.bodyA
         }
         guard let okaneNode = okane.node else { return }
-        guard let targetNode = target.node else { return }
+        guard target.node != nil else { return }
         okaneNode.removeFromParent()
         playSound(name: "reji sound")
         }
@@ -134,6 +141,27 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         physicsWorld.gravity = CGVector(dx: 0, dy: 0)
         physicsWorld.contactDelegate = self
         
+        let label3 = UILabel()
+        label3.text = "score"
+        label3.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
+        label3.font = UIFont(name: "HiraMinProN-W3", size: 25)
+        label3.sizeToFit()
+        label3.frame.size = CGSize(width: 300, height: 45)
+        label3.center = (self.view?.center)!
+        self.view?.addSubview(label3)
+        for family in UIFont.familyNames {
+            for fontName in UIFont.fontNames(forFamilyName: family) {
+                print(fontName)
+            }
+        }
+        label3.backgroundColor = UIColor.white // 背景を白に変更
+        label3.textColor = UIColor.black // 文字色を黒に変更
+        
+        // UILabelの中央座標を (0, 0) にする
+        label3.center = CGPoint(x:frame.midX + view.frame.size.width/2, y:frame.midY + 30)
+        
+        label3.text = "残り時間:0\n2行目"
+        label3.numberOfLines = 0
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.addAsteroid()

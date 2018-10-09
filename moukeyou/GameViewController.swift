@@ -38,9 +38,6 @@ class GameViewController: UIViewController {
         label.numberOfLines = 0
  
         
-        
-        
-        
         let label2 = UILabel()
         label2.text = "score"
         label2.frame = CGRect(x: 0, y: 0, width: 300, height: 30)
@@ -61,6 +58,7 @@ class GameViewController: UIViewController {
         
         label2.text = "所持金:0\n2行目"
         label2.numberOfLines = 0
+        
         
             if let view = self.view as! SKView? {
             // Load the SKScene from 'GameScene.sks'

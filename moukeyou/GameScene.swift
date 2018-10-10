@@ -13,6 +13,14 @@ import AVFoundation
 class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     // 人を降らせる
     var timer: Timer?
+    //残りの時間
+    var timer2: Timer?
+    //残りの時間の表示用
+    var timer3: Int = 60 {
+        didSet {
+            timerLabel.text = "残り時間: \(timer3)"
+        }
+    }
     // 矢印
     var ao_ue:SKSpriteNode!
     var ao_sita:SKSpriteNode!
@@ -22,16 +30,34 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var aka_sita:SKSpriteNode!
     var aka_hidari:SKSpriteNode!
     var aka_migi:SKSpriteNode!
+    
     // マイナスの人
     var minustenyen:SKSpriteNode!
     var minushyakuyen:SKSpriteNode!
     var minusgohyakuyen:SKSpriteNode!
+    
     // 増やしてくれる人
     var goyen:SKSpriteNode!
     var tenyen:SKSpriteNode!
     var gojyuuyen:SKSpriteNode!
     var hyakuyen:SKSpriteNode!
     var gohyakuyen:SKSpriteNode!
+
+    //赤
+    var score: Int = 0 {
+        didSet {
+            scoreLabel.text = "所持金: \(score)"
+        }
+    }
+    //青
+    var score2: Int = 0 {
+        didSet {
+            scoreLabel2.text = "所持金: \(score2)"
+        }
+    }
+
+    
+
     //長押し
     var aka_yazirushi:Int = 0
     var ao_yazirushi:Int = 0
@@ -39,15 +65,21 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //音
     var audioPlayer: AVAudioPlayer!
     var BGMPlayer: AVAudioPlayer!
+    
     // 店
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
-
+    
+    //タイマー
+    var nokorijikan:Int = 60
+    var timerLabel: SKLabelNode!
+    
     let aka_ieCategory: UInt32 = 0b0001
     let ao_ieCategory: UInt32 = 0b0010
     let okaneCategory: UInt32 = 0b0100
     let bigCategory: UInt32 = 0b1000
-    
+    var scoreLabel: SKLabelNode!
+    var scoreLabel2: SKLabelNode!
     
     func addAsteroid() {
         let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small"]
@@ -76,7 +108,17 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             target = contact.bodyA
         }
         guard let okaneNode = okane.node else { return }
+
         guard let targetNode = target.node else { return }
+        if target.categoryBitMask == aka_ieCategory {
+            score += 5
+        }
+        
+        if target.categoryBitMask == ao_ieCategory {
+            score2 += 5
+        }
+
+        guard target.node != nil else { return }
         okaneNode.removeFromParent()
         playSound(name: "reji sound")
         }
@@ -137,6 +179,11 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         
         timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.addAsteroid()
+        })
+        
+        //残りの時間を減らす
+        timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
+            self.timer3 = self.timer3 - 1
         })
         
         //ゲーム画面の背景色を薄緑にする
@@ -242,7 +289,35 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        self.gohyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         //        self.gohyakuyen.position = CGPoint(x: 10, y: 0)
         //        addChild(self.gohyakuyen)
-        //
+
+        //赤の得点表
+        scoreLabel = SKLabelNode(text:"所持金:0\n2行目" )
+        //        scoreLabel.fontName = "HiraMinProN-W3"
+        scoreLabel.fontName = "Papyrus"
+        scoreLabel.fontSize = 25
+        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
+
+        addChild(scoreLabel)
+
+        //青の得点表
+        scoreLabel2 = SKLabelNode(text:"所持金:0\n2行目" )
+        //        scoreLabel2.fontName = "HiraMinProN-W3"
+        scoreLabel2.fontName = "Papyrus"
+        scoreLabel2.fontSize = 25
+        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.6, y: frame.midY -
+            view.frame.size.height / 8)
+        addChild(scoreLabel2)
+
+    
+
+        
+        timerLabel = SKLabelNode(text: "残り時間: 0")
+        timerLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+        timerLabel.fontName = "Papyrus"
+        timerLabel.fontSize = 30
+        timerLabel.position = CGPoint(x:0, y: 245)
+        addChild(timerLabel)
+
     }
     
     

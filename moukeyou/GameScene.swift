@@ -92,7 +92,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var scoreLabel2: SKLabelNode!
     
     func addAsteroid() {
-        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small"]
+        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small","ie_big","ie_big","gohyakuyen","gojyuuyen","minushyakuyen",]
         let index = Int(arc4random_uniform(UInt32(names.count)))
         let name = names[index]
         let okane = SKSpriteNode(imageNamed: name)
@@ -184,53 +184,70 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             }
             if okane.categoryBitMask == ie_bigCategory {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width*1.2 ,height:self.aka_ie.size.height*1.2 ))
+                self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 30, height:self.aka_ie.size.height / 30))
+                self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.collisionBitMask = 0
             }
             if okane.categoryBitMask == ie_smallCategory {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width/1.2 ,height:self.aka_ie.size.height/1.2 ))
+                
+                self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 30, height:self.aka_ie.size.width / 30))
+                self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.collisionBitMask = 0
             }
+            playSound(name: "reji sound")
         }
-        
         if target.categoryBitMask == ao_ieCategory {
            print(okane)
-       
-        if okane.categoryBitMask == gohyakuenCategory {
-            score2 += 500
+            if okane.categoryBitMask == gohyakuenCategory {
+                score2 += 500
+            }
+            if okane.categoryBitMask == hyakuyenCategory {
+                score2 += 100
+            }
+            if okane.categoryBitMask == goyenCategory {
+                score2 += 5
+            }
+            if okane.categoryBitMask == gojyuuyenCategory {
+                score2 += 50
+            }
+            if okane.categoryBitMask == minusgohyakuyenCategory {
+                score2 -= 500
+            }
+            if okane.categoryBitMask == minushyakuyenCategory {
+                score2 -= 100
+            }
+            if okane.categoryBitMask == minustenyenCategory {
+                score2 -= 10
+            }
+            if okane.categoryBitMask == tenyenCategory {
+                score2 += 10
+            }
+            if okane.categoryBitMask == ie_bigCategory {
+                self.ao_ie.scale(to: CGSize(width:self.ao_ie.size.width*1.2 ,height:self.ao_ie.size.height*1.2 ))
+                self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 7, height:self.aka_ie.size.height / 7))
+                self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
+                self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
+                self.ao_ie.physicsBody?.collisionBitMask = 0
+                
+            }
+            if okane.categoryBitMask == ie_smallCategory {
+                self.ao_ie.scale(to: CGSize(width: self.ao_ie.size.width/1.2 ,height:self.ao_ie.size.height/1.2 ))
+                self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.ao_ie.size.width / 7, height:self.ao_ie.size.width / 7))
+                self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
+                self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
+                self.ao_ie.physicsBody?.collisionBitMask = 0
+                
+            }
+            playSound(name: "reji sound")
         }
-        if okane.categoryBitMask == hyakuyenCategory {
-            score2 += 100
-        }
-        if okane.categoryBitMask == goyenCategory {
-            score2 += 5
-        }
-        if okane.categoryBitMask == gojyuuyenCategory {
-            score2 += 50
-        }
-        if okane.categoryBitMask == minusgohyakuyenCategory {
-            score2 -= 500
-        }
-        if okane.categoryBitMask == minushyakuyenCategory {
-            score2 -= 100
-        }
-        if okane.categoryBitMask == minustenyenCategory {
-            score2 -= 10
-        }
-        if okane.categoryBitMask == tenyenCategory {
-            score2 += 10
-        }
-        if okane.categoryBitMask == ie_bigCategory {
-            self.ao_ie.scale(to: CGSize(width:self.ao_ie.size.width*1.2 ,height:self.ao_ie.size.height*1.2 ))
-        }
-        if okane.categoryBitMask == ie_smallCategory {
-            self.ao_ie.scale(to: CGSize(width: self.ao_ie.size.width/1.2 ,height:self.ao_ie.size.height/1.2 ))
-           }
-        }
-
-        
-        
-        guard target.node != nil else { return }
         okaneNode.removeFromParent()
-        playSound(name: "reji sound")
-        }
+       
+        
+        
+    }
     
     
     
@@ -307,7 +324,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 30, height: frame.width / 30))
+        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.collisionBitMask = 0
@@ -316,7 +333,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
         self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
-        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 30, height: frame.width / 30))
+        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.collisionBitMask = 0

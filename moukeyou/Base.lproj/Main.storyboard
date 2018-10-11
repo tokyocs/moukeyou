@@ -9,10 +9,10 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--start-->
         <scene sceneID="kO2-UQ-I68">
             <objects>
-                <viewController modalTransitionStyle="crossDissolve" id="51m-Id-fSp" sceneMemberID="viewController">
+                <viewController title="start" modalTransitionStyle="crossDissolve" id="51m-Id-fSp" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="0jF-Pk-ckw"/>
                         <viewControllerLayoutGuide type="bottom" id="XIO-Ha-dCQ"/>
@@ -30,10 +30,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="  もうけよう！" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="mcp-oa-f7g">
-                                <rect key="frame" x="289" y="68" width="446" height="142"/>
+                                <rect key="frame" x="59" y="79" width="945" height="142"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="62"/>
-                                <color key="textColor" red="0.79140608851519578" green="0.79288126053644781" blue="0.012869497340252769" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="125"/>
+                                <color key="textColor" red="0.89836750685018085" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                 <nil key="highlightedColor"/>
                             </label>
                             <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="eAn-0R-aeX">
@@ -49,10 +49,10 @@
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Mjl-7v-msC">
-                                <rect key="frame" x="266" y="286" width="492" height="121"/>
+                                <rect key="frame" x="235" y="313" width="554" height="94"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="backgroundColor" red="0.82343284589999999" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <color key="backgroundColor" red="0.89426980563325464" green="1" blue="0.0055495707187257493" alpha="1" colorSpace="calibratedRGB"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="55"/>
                                 <state key="normal" title="タッチしてスタート">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
@@ -81,15 +81,19 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
+                    <connections>
+                        <segue destination="VLB-2q-U3G" kind="show" identifier="toBlueWin" id="0xj-AO-tQC"/>
+                        <segue destination="7l0-HN-BD4" kind="show" identifier="toRedWin" id="dr1-no-JNx"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="-534"/>
         </scene>
-        <!--View Controller-->
+        <!--BlueWin-->
         <scene sceneID="Zcl-0U-KGe">
             <objects>
-                <viewController id="VLB-2q-U3G" sceneMemberID="viewController">
+                <viewController title="BlueWin" id="VLB-2q-U3G" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="Wtl-lT-Fqm"/>
                         <viewControllerLayoutGuide type="bottom" id="E91-Hg-0Zd"/>
@@ -108,12 +112,12 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="5v1-AR-xnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="654.4921875" y="-546.09375"/>
+            <point key="canvasLocation" x="-62" y="-207"/>
         </scene>
-        <!--View Controller-->
+        <!--RedWin-->
         <scene sceneID="XDf-sH-5aL">
             <objects>
-                <viewController id="7l0-HN-BD4" sceneMemberID="viewController">
+                <viewController title="RedWin" id="7l0-HN-BD4" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="uev-UZ-1Vx"/>
                         <viewControllerLayoutGuide type="bottom" id="kgf-dL-FxI"/>
@@ -132,7 +136,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="bkL-Kj-t9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1738" y="-546"/>
+            <point key="canvasLocation" x="-62" y="-830"/>
         </scene>
     </scenes>
     <resources>

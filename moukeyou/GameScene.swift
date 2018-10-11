@@ -36,7 +36,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var minushyakuyen:SKSpriteNode!
     var minusgohyakuyen:SKSpriteNode!
     
-    // 増やしてくれる人
+    // プラスの人
     var goyen:SKSpriteNode!
     var tenyen:SKSpriteNode!
     var gojyuuyen:SKSpriteNode!
@@ -49,14 +49,13 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             scoreLabel.text = "所持金: \(score)"
         }
     }
+    
     //青
     var score2: Int = 0 {
         didSet {
             scoreLabel2.text = "所持金: \(score2)"
         }
     }
-
-    
 
     //長押し
     var aka_yazirushi:Int = 0
@@ -88,6 +87,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     let tenyenCategory: UInt32 = 0b01111
     let ie_bigCategory: UInt32 = 0b10000
     let ie_smallCategory: UInt32 = 0b10001
+    
     var scoreLabel: SKLabelNode!
     var scoreLabel2: SKLabelNode!
     
@@ -189,7 +189,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width/1.2 ,height:self.aka_ie.size.height/1.2 ))
             }
         }
-       if target.categoryBitMask == ao_ieCategory {
+        
+        if target.categoryBitMask == ao_ieCategory {
            print(okane)
        
         if okane.categoryBitMask == gohyakuenCategory {
@@ -612,6 +613,10 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //1秒後に画面を移動する
         Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
             // 結果シーンに遷移させる。
+            let ud = UserDefaults.standard
+            ud.set(self.score, forKey: "score")
+            ud.set(self.score2, forKey: "score2")
+            
             let newScene = KekkaScene(size: (self.scene?.size)!)
             newScene.scaleMode = SKSceneScaleMode.aspectFill
             self.view?.presentScene(newScene)

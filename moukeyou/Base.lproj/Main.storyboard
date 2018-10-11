@@ -81,67 +81,13 @@
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
-                    <connections>
-                        <segue destination="VLB-2q-U3G" kind="show" identifier="toBlueWin" id="0xj-AO-tQC"/>
-                        <segue destination="7l0-HN-BD4" kind="show" identifier="toRedWin" id="dr1-no-JNx"/>
-                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SZV-WD-TEh" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-732" y="-534"/>
         </scene>
-        <!--BlueWin-->
-        <scene sceneID="Zcl-0U-KGe">
-            <objects>
-                <viewController title="BlueWin" id="VLB-2q-U3G" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="Wtl-lT-Fqm"/>
-                        <viewControllerLayoutGuide type="bottom" id="E91-Hg-0Zd"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="5Lj-5n-9Zo">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="ao_kati" translatesAutoresizingMaskIntoConstraints="NO" id="hx1-9C-80d">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="779"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="5v1-AR-xnb" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-62" y="-207"/>
-        </scene>
-        <!--RedWin-->
-        <scene sceneID="XDf-sH-5aL">
-            <objects>
-                <viewController title="RedWin" id="7l0-HN-BD4" sceneMemberID="viewController">
-                    <layoutGuides>
-                        <viewControllerLayoutGuide type="top" id="uev-UZ-1Vx"/>
-                        <viewControllerLayoutGuide type="bottom" id="kgf-dL-FxI"/>
-                    </layoutGuides>
-                    <view key="view" contentMode="scaleToFill" id="oZ9-sB-lhJ">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_kati" translatesAutoresizingMaskIntoConstraints="NO" id="L39-lD-H7f">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="768"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            </imageView>
-                        </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                    </view>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="bkL-Kj-t9t" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-62" y="-830"/>
-        </scene>
     </scenes>
     <resources>
-        <image name="aka_kati" width="960" height="720"/>
-        <image name="ao_kati" width="960" height="720"/>
         <image name="gohyakuyen" width="320" height="320"/>
     </resources>
 </document>

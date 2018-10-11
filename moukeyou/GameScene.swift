@@ -16,7 +16,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //残りの時間
     var timer2: Timer?
     //残りの時間の表示用
-    var timer3: Int = 80 {
+    var timer3: Int = 10 {
         didSet {
             timerLabel.text = "残り時間: \(timer3)"
         }
@@ -154,7 +154,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         }
         guard let okaneNode = okane.node else { return }
         guard target.node != nil else { return }
-        guard let targetNode = target.node else { return }
+        guard target.node != nil else { return }
         if target.categoryBitMask == aka_ieCategory {
             print(okane)
             

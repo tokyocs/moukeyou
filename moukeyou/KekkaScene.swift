@@ -13,6 +13,7 @@ import AVFoundation
 class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var haikei:SKSpriteNode!
     var haikei2:SKSpriteNode!
+    var haikei3:SKSpriteNode!
     var tokutenLabel:SKLabelNode!
     
     override func didMove(to view: SKView) {
@@ -32,7 +33,12 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             self.haikei2.yScale = view.frame.size.height/self.haikei2.size.height
             self.haikei2.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
             addChild(self.haikei2)
-        }
+        }else if score == score2 {
+            self.haikei3 = SKSpriteNode(imageNamed: "AoWin")
+            self.haikei3.xScale = view.frame.size.width/self.haikei3.size.width
+            self.haikei3.yScale = view.frame.size.height/self.haikei3.size.height
+            self.haikei3.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
+            addChild(self.haikei3)
         
         //self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
 
@@ -79,6 +85,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
 //        backLabel.name = "Back"
 //        self.addChild(backLabel)
         
-    }
+           }
 
-}
+        }
+    }

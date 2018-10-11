@@ -74,10 +74,20 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var nokorijikan:Int = 60
     var timerLabel: SKLabelNode!
     
-    let aka_ieCategory: UInt32 = 0b0001
-    let ao_ieCategory: UInt32 = 0b0010
-    let okaneCategory: UInt32 = 0b0100
-    let bigCategory: UInt32 = 0b1000
+    let aka_ieCategory: UInt32 = 0b00001
+    let ao_ieCategory: UInt32 = 0b00010
+    let okaneCategory: UInt32 = 0b00011
+    let bigCategory: UInt32 = 0b00100
+    let gohyakuenCategory: UInt32 = 0b00101
+    let gojyuuyenCategory: UInt32 = 0b00110
+    let hyakuyenCategory: UInt32 = 0b00111
+    let goyenCategory: UInt32 = 0b01000
+    let minusgohyakuyenCategory: UInt32 = 0b01001
+    let minushyakuyenCategory: UInt32 = 0b01010
+    let minustenyenCategory: UInt32 = 0b01011
+    let tenyenCategory: UInt32 = 0b01111
+    let ie_bigCategory: UInt32 = 0b10000
+    let ie_smallCategory: UInt32 = 0b10001
     var scoreLabel: SKLabelNode!
     var scoreLabel2: SKLabelNode!
     
@@ -91,10 +101,46 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         okane.position = CGPoint(x: positionX, y: frame.height / 2 + okane.frame.height)
         okane.scale(to: CGSize(width: 70, height: 70))
         okane.physicsBody = SKPhysicsBody(circleOfRadius: okane.frame.width)
+        if(name == "gohyakuyen"){
+            okane.physicsBody?.categoryBitMask = gohyakuenCategory
+        }
+        if(name == "gojyuuyen"){
+            okane.physicsBody?.categoryBitMask = gojyuuyenCategory
+        }
+        if(name == "hyakuyen"){
+            okane.physicsBody?.categoryBitMask = hyakuyenCategory
+        }
+        if(name == "goyen"){
+            okane.physicsBody?.categoryBitMask = goyenCategory
+        }
+        if(name == "minusgohyakuyen"){
+            okane.physicsBody?.categoryBitMask = minusgohyakuyenCategory
+        }
+        if(name == "minushyakuyen"){
+            okane.physicsBody?.categoryBitMask = minushyakuyenCategory
+        }
+        if(name == "minustenyen"){
+            okane.physicsBody?.categoryBitMask = minustenyenCategory
+        }
+        if(name == "tenyen"){
+            okane.physicsBody?.categoryBitMask = tenyenCategory
+        }
+        if(name == "ie_big"){
+            okane.physicsBody?.categoryBitMask = ie_bigCategory
+        }
+        if(name == "ie_small"){
+            okane.physicsBody?.categoryBitMask = ie_smallCategory
+        }
+        okane.physicsBody?.contactTestBitMask = ao_ieCategory|aka_ieCategory
+        okane.physicsBody?.collisionBitMask = 0
         addChild(okane)
         let move = SKAction.moveTo(y: -frame.height / 2 - okane.frame.height, duration: 20.0)
         let remove = SKAction.removeFromParent()
         okane.run(SKAction.sequence([move, remove]))
+        
+    
+    
+    
     }
     func didBegin(_ contact: SKPhysicsContact) {
         var okane: SKPhysicsBody
@@ -102,22 +148,86 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         if contact.bodyA.categoryBitMask == okaneCategory {
             okane = contact.bodyA
             target = contact.bodyB
-            
         } else {
             okane = contact.bodyB
             target = contact.bodyA
         }
         guard let okaneNode = okane.node else { return }
-
         guard let targetNode = target.node else { return }
+
         if target.categoryBitMask == aka_ieCategory {
-            score += 5
+            print(okane)
+            
+            if okane.categoryBitMask == gohyakuenCategory {
+                score += 500
+            }
+            if okane.categoryBitMask == hyakuyenCategory {
+                score += 100
+            }
+            if okane.categoryBitMask == goyenCategory {
+                score += 5
+            }
+            if okane.categoryBitMask == gojyuuyenCategory {
+                score += 50
+            }
+            if okane.categoryBitMask == minusgohyakuyenCategory {
+                score -= 500
+            }
+            if okane.categoryBitMask == minushyakuyenCategory {
+                score -= 100
+            }
+            if okane.categoryBitMask == minustenyenCategory {
+                score -= 10
+            }
+            if okane.categoryBitMask == tenyenCategory {
+                score += 10
+            }
+            if okane.categoryBitMask == ie_bigCategory {
+                score += 10
+            }
+            if okane.categoryBitMask == ie_smallCategory {
+                score += 10
+            }
         }
-        
-        if target.categoryBitMask == ao_ieCategory {
+       if target.categoryBitMask == ao_ieCategory {
+           print(okane)
+       
+        if okane.categoryBitMask == gohyakuenCategory {
+            score2 += 500
+        }
+        if okane.categoryBitMask == hyakuyenCategory {
+            score2 += 100
+        }
+        if okane.categoryBitMask == goyenCategory {
             score2 += 5
         }
+        if okane.categoryBitMask == gojyuuyenCategory {
+            score2 += 50
+        }
+        if okane.categoryBitMask == minusgohyakuyenCategory {
+            score2 -= 500
+        }
+        if okane.categoryBitMask == minushyakuyenCategory {
+            score2 -= 100
+        }
+        if okane.categoryBitMask == minustenyenCategory {
+            score2 -= 10
+        }
+        if okane.categoryBitMask == tenyenCategory {
+            score2 += 10
+        }
+        if okane.categoryBitMask == ie_bigCategory {
+            score2 += 10
+        }
+        if okane.categoryBitMask == ie_smallCategory {
+            score2 += 10
+             }
+        }
 
+       
+        
+        
+        
         guard target.node != nil else { return }
         okaneNode.removeFromParent()
         playSound(name: "reji sound")
@@ -259,6 +369,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        self.minustenyen.position = CGPoint(x: -190, y: 0)
         //        addChild(self.minustenyen)
         
+
         //        self.minushyakuyen = SKSpriteNode(imageNamed: "minushyakuyen")
         //        self.minushyakuyen.scale(to: CGSize(width: frame.width / 8, height: frame.width / 8))
         //        self.minushyakuyen.position = CGPoint(x: -140, y: 0)

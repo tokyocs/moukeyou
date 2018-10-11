@@ -92,7 +92,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var scoreLabel2: SKLabelNode!
     
     func addAsteroid() {
-        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small"]
+        let names = ["gohyakuyen","gojyuuyen","hyakuyen","goyen","minusgohyakuyen","minushyakuyen","minustenyen","tenyen","ie_big","ie_small","ie_big","ie_big","gohyakuyen","gojyuuyen","minushyakuyen",]
         let index = Int(arc4random_uniform(UInt32(names.count)))
         let name = names[index]
         let okane = SKSpriteNode(imageNamed: name)
@@ -184,14 +184,24 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             }
             if okane.categoryBitMask == ie_bigCategory {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width*1.2 ,height:self.aka_ie.size.height*1.2 ))
+                
+                self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 30, height:self.aka_ie.size.height / 30))
+                self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.collisionBitMask = 0
             }
             if okane.categoryBitMask == ie_smallCategory {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width/1.2 ,height:self.aka_ie.size.height/1.2 ))
+                
+                self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 30, height:self.aka_ie.size.width / 30))
+                self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
+                self.aka_ie.physicsBody?.collisionBitMask = 0
             }
         }
        if target.categoryBitMask == ao_ieCategory {
            print(okane)
-       
+        }
         if okane.categoryBitMask == gohyakuenCategory {
             score2 += 500
         }
@@ -221,15 +231,10 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         }
         if okane.categoryBitMask == ie_smallCategory {
             self.ao_ie.scale(to: CGSize(width: self.ao_ie.size.width/1.2 ,height:self.ao_ie.size.height/1.2 ))
-           }
         }
-
-        
-        
-        guard target.node != nil else { return }
         okaneNode.removeFromParent()
         playSound(name: "reji sound")
-        }
+    }
     
     
     

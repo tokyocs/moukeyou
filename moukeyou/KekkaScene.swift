@@ -16,15 +16,16 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     
     override func didMove(to view: SKView) {
         
-        self.haikei = SKSpriteNode(imageNamed: "aka_kati")
-        self.haikei.scale(to: view.frame.size)
-//        self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
-//        self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
-        self.haikei.position = CGPoint(x: size.width*0.5 , y: size.height*0.5)
+        self.haikei = SKSpriteNode(imageNamed: "AkaWin")
+        self.haikei.xScale = view.frame.size.width/self.haikei.size.width
+        self.haikei.yScale = view.frame.size.height/self.haikei.size.height      
+        //self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
+        
+        self.haikei.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
         addChild(self.haikei)
         
         tokutenLabel = SKLabelNode(text: "得点:0")
-        tokutenLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+        tokutenLabel.fontColor = UIColor.white
         tokutenLabel.fontName = "Papyrus"
         tokutenLabel.fontSize = 30
         tokutenLabel.position = CGPoint(x:0, y: 245)

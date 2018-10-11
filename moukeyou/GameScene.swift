@@ -312,7 +312,6 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.collisionBitMask = 0
-        
         addChild(self.aka_ie)
         
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
@@ -322,10 +321,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.collisionBitMask = 0
-        
         addChild(self.ao_ie)
-        
-        
         
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")

@@ -21,13 +21,13 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         let score2 = ud.integer(forKey: "score2")
         
         if score > score2 {
-            self.haikei = SKSpriteNode(imageNamed: "AkaWin")
+            self.haikei = SKSpriteNode(imageNamed: "akawin")
             self.haikei.xScale = view.frame.size.width/self.haikei.size.width
             self.haikei.yScale = view.frame.size.height/self.haikei.size.height
             self.haikei.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
             addChild(self.haikei)
         }else if score < score2 {
-            self.haikei2 = SKSpriteNode(imageNamed: "AoWin")
+            self.haikei2 = SKSpriteNode(imageNamed: "aowin")
             self.haikei2.xScale = view.frame.size.width/self.haikei2.size.width
             self.haikei2.yScale = view.frame.size.height/self.haikei2.size.height
             self.haikei2.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)

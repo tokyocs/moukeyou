@@ -14,7 +14,6 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var haikei:SKSpriteNode!
     var haikei2:SKSpriteNode!
     var haikei3:SKSpriteNode!
-    var tokutenLabel:SKLabelNode!
     
     override func didMove(to view: SKView) {
         let ud = UserDefaults.standard
@@ -34,21 +33,14 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             self.haikei2.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
             addChild(self.haikei2)
         }else if score == score2 {
-            self.haikei3 = SKSpriteNode(imageNamed: "AoWin")
+            self.haikei3 = SKSpriteNode(imageNamed: "hikiwake")
             self.haikei3.xScale = view.frame.size.width/self.haikei3.size.width
             self.haikei3.yScale = view.frame.size.height/self.haikei3.size.height
             self.haikei3.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
             addChild(self.haikei3)
+        }
         
         //self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
-
-        tokutenLabel = SKLabelNode(text: "得点:0")
-        tokutenLabel.fontColor = UIColor.white
-        tokutenLabel.fontName = "Papyrus"
-        tokutenLabel.fontSize = 30
-        tokutenLabel.position = CGPoint(x:0, y: 245)
-        addChild(tokutenLabel)
-        
         
         
         // スコアとハイスコアをユーザデフォルトから取っておく。
@@ -88,4 +80,4 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
            }
 
         }
-    }
+

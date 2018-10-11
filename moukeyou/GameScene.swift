@@ -183,10 +183,10 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
                 score += 10
             }
             if okane.categoryBitMask == ie_bigCategory {
-                score += 10
+                self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width*1.2 ,height:self.aka_ie.size.height*1.2 ))
             }
             if okane.categoryBitMask == ie_smallCategory {
-                score += 10
+                self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width/1.2 ,height:self.aka_ie.size.height/1.2 ))
             }
         }
        if target.categoryBitMask == ao_ieCategory {
@@ -217,15 +217,13 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             score2 += 10
         }
         if okane.categoryBitMask == ie_bigCategory {
-            score2 += 10
+            self.ao_ie.scale(to: CGSize(width:self.ao_ie.size.width*1.2 ,height:self.ao_ie.size.height*1.2 ))
         }
         if okane.categoryBitMask == ie_smallCategory {
-            score2 += 10
-             }
+            self.ao_ie.scale(to: CGSize(width: self.ao_ie.size.width/1.2 ,height:self.ao_ie.size.height/1.2 ))
+           }
         }
 
-       
-        
         
         
         guard target.node != nil else { return }

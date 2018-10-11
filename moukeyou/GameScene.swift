@@ -16,7 +16,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //残りの時間
     var timer2: Timer?
     //残りの時間の表示用
-    var timer3: Int = 60 {
+    var timer3: Int = 80 {
         didSet {
             timerLabel.text = "残り時間: \(timer3)"
         }
@@ -153,8 +153,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             target = contact.bodyA
         }
         guard let okaneNode = okane.node else { return }
+        guard target.node != nil else { return }
         guard let targetNode = target.node else { return }
-
         if target.categoryBitMask == aka_ieCategory {
             print(okane)
             
@@ -294,7 +294,12 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //残りの時間を減らす
         timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.timer3 = self.timer3 - 1
+            //0秒になったらゲームオーバー
+            if(self.timer3 <= 0) {
+                self.gameOver()
+            }
         })
+        
         
         //ゲーム画面の背景色を薄緑にする
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
@@ -406,27 +411,29 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        addChild(self.gohyakuyen)
 
         //赤の得点表
-        scoreLabel = SKLabelNode(text:"所持金:0\n2行目" )
+        scoreLabel = SKLabelNode(text:"所持金:0" )
         //        scoreLabel.fontName = "HiraMinProN-W3"
         scoreLabel.fontName = "Papyrus"
         scoreLabel.fontSize = 25
         scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
-
+        scoreLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
         addChild(scoreLabel)
 
         //青の得点表
-        scoreLabel2 = SKLabelNode(text:"所持金:0\n2行目" )
-        //        scoreLabel2.fontName = "HiraMinProN-W3"
+        scoreLabel2 = SKLabelNode(text:"所持金:0" )
+//        scoreLabel2.fontName = "HiraMinProN-W3"
         scoreLabel2.fontName = "Papyrus"
         scoreLabel2.fontSize = 25
         scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.6, y: frame.midY -
             view.frame.size.height / 8)
+        scoreLabel2.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+
         addChild(scoreLabel2)
 
     
 
         
-        timerLabel = SKLabelNode(text: "残り時間: 0")
+        timerLabel = SKLabelNode(text: "残り時間:0")
         timerLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
         timerLabel.fontName = "Papyrus"
         timerLabel.fontSize = 30
@@ -597,6 +604,25 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         }else if ao_yazirushi == 4{
             let moveToLeft = SKAction.moveTo(x: self.ao_ie.position.x - 30, duration: 0.2)
             ao_ie.run(moveToLeft)
+        }
+    }
+    func gameOver() {
+        //ゲームを中断
+        isPaused = true
+        //タイマーを止める
+        timer?.invalidate()
+        timer2?.invalidate()
+        //音を止める
+        //FIXME
+        
+        //得点を保存する
+        //FIXME
+        //1秒後に画面を移動する
+        Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) { _ in
+            // 結果シーンに遷移させる。
+            let newScene = KekkaScene(size: (self.scene?.size)!)
+            newScene.scaleMode = SKSceneScaleMode.aspectFill
+            self.view?.presentScene(newScene)
         }
     }
 }

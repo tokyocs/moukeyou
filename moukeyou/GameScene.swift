@@ -70,7 +70,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var ao_ie:SKSpriteNode!
     
     //タイマー
-    var nokorijikan:Int = 60
+    var nokorijikan:Int = 80
     var timerLabel: SKLabelNode!
     
     let aka_ieCategory: UInt32 = 0b00001
@@ -322,8 +322,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         
         //　お店の表示
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
-        self.aka_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
+        self.aka_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
+        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 2, y: frame.midY + view.frame.size.height / 2.5)
         self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
@@ -331,8 +331,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         addChild(self.aka_ie)
         
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
-        self.ao_ie.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 3.5, y: frame.midY + view.frame.size.height / 4)
+        self.ao_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
+        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 2, y: frame.midY + view.frame.size.height / 2.5)
         self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
@@ -446,8 +446,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         timerLabel = SKLabelNode(text: "残り時間:0")
         timerLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
         timerLabel.fontName = "Papyrus"
-        timerLabel.fontSize = 30
-        timerLabel.position = CGPoint(x:0, y: 245)
+        timerLabel.fontSize = 60
+        timerLabel.position = CGPoint(x:0, y: 450)
         addChild(timerLabel)
 
     }

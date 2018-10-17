@@ -9,17 +9,30 @@
 import SpriteKit
 import GameplayKit
 import AVFoundation
+import UIKit
 
 class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var haikei:SKSpriteNode!
     var haikei2:SKSpriteNode!
     var haikei3:SKSpriteNode!
+    var moukeru:SKSpriteNode!
+    // ゲームシーンに戻る関数
+    func goToGameScene(){
+        // 戻したいゲームシーンを画面の大きさとともに設定する
+        let gameScene:GameScene = GameScene(size: (UIScreen.main.bounds.size))
+        // ゲームシーンに移る時にどんな画面の変え方をするかを記述する
+        let transition = SKTransition.fade(withDuration: 1.0)
+        // 画面にフィト（fit）させるか、脇を切る（fill）かを選択する。
+        gameScene.scaleMode = SKSceneScaleMode.fill
+        // ゲームシーンに戻してもう一度ゲームをプレイする。
+        self.view!.presentScene(gameScene, transition: transition)
+    }
+
     
     override func didMove(to view: SKView) {
         let ud = UserDefaults.standard
         let score = ud.integer(forKey: "score")
         let score2 = ud.integer(forKey: "score2")
-        
         if score > score2 {
             self.haikei = SKSpriteNode(imageNamed: "akawin")
             self.haikei.xScale = view.frame.size.width/self.haikei.size.width
@@ -39,7 +52,12 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             self.haikei3.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
             addChild(self.haikei3)
         }
-        
+        self.moukeru = SKSpriteNode(imageNamed: "moukeru")
+        self.moukeru.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
+        self.moukeru.position = CGPoint(x: frame.midX, y: frame.midY - view.frame.size.height / 4)
+        self.moukeru.zPosition = 100
+        addChild(self.moukeru)
+
         //self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
         
         
@@ -77,7 +95,17 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
 //        backLabel.name = "Back"
 //        self.addChild(backLabel)
         
-           }
-
+    }
+        override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
+        for touch: AnyObject in touches {
+            let location = touch.location(in: self)
+            let touchNode = self.atPoint(location)
+            if touchNode == moukeru {
+                goToGameScene()
+            }
         }
+    }
+
+
+}
 

@@ -16,7 +16,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     //残りの時間
     var timer2: Timer?
     //残りの時間の表示用
-    var timer3: Int = 5 {
+    var timer3: Int = 80 {
         didSet {
             timerLabel.text = "残り時間: \(timer3)"
         }
@@ -323,7 +323,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //　お店の表示
         self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
         self.aka_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
-        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 2, y: frame.midY + view.frame.size.height / 2.5)
+        self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 2.5, y: frame.midY + view.frame.size.height / 3)
         self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
@@ -332,7 +332,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         
         self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
         self.ao_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
-        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 2, y: frame.midY + view.frame.size.height / 2.5)
+        self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 2.5, y: frame.midY + view.frame.size.height / 3)
         self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
@@ -342,42 +342,42 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //矢印各種の配置と表示
         self.ao_ue = SKSpriteNode(imageNamed: "ao_ue")
         self.ao_ue.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.ao_ue.position = CGPoint(x: frame.midX + view.frame.size.width / 1.9, y: frame.midY - view.frame.size.height / 3)
+        self.ao_ue.position = CGPoint(x: frame.midX + view.frame.size.width / 2.5, y: frame.midY - view.frame.size.height / 3.7)
         addChild(self.ao_ue)
         
         self.ao_sita = SKSpriteNode(imageNamed: "ao_sita")
         self.ao_sita.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.ao_sita.position = CGPoint(x: frame.midX + view.frame.size.width / 1.9, y: frame.midY - view.frame.size.height / 1.75)
+        self.ao_sita.position = CGPoint(x: frame.midX + view.frame.size.width / 2.5, y: frame.midY - view.frame.size.height / 2.25)
         addChild(self.ao_sita)
         
         self.ao_hidari = SKSpriteNode(imageNamed: "ao_hidari")
         self.ao_hidari.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.ao_hidari.position = CGPoint(x: frame.midX + view.frame.size.width / 2.29, y: frame.midY - view.frame.size.height / 2.23)
+        self.ao_hidari.position = CGPoint(x: frame.midX + view.frame.size.width / 3, y: frame.midY - view.frame.size.height / 2.8)
         addChild(self.ao_hidari)
         
         self.ao_migi = SKSpriteNode(imageNamed: "ao_migi")
         self.ao_migi.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.ao_migi.position = CGPoint(x: frame.midX + view.frame.size.width / 1.63, y: frame.midY - view.frame.size.height / 2.23)
+        self.ao_migi.position = CGPoint(x: frame.midX + view.frame.size.width / 2.15, y: frame.midY - view.frame.size.height / 2.8)
         addChild(self.ao_migi)
         
         self.aka_ue = SKSpriteNode(imageNamed: "aka_ue")
         self.aka_ue.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.aka_ue.position = CGPoint(x: frame.midX - view.frame.size.width / 1.9, y: frame.midY - view.frame.size.height / 3)
+        self.aka_ue.position = CGPoint(x: frame.midX - view.frame.size.width / 2.5, y: frame.midY - view.frame.size.height / 3.7)
         addChild(self.aka_ue)
         
         self.aka_sita = SKSpriteNode(imageNamed: "aka_sita")
         self.aka_sita.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.aka_sita.position = CGPoint(x: frame.midX - view.frame.size.width / 1.9, y: frame.midY - view.frame.size.height / 1.75)
+        self.aka_sita.position = CGPoint(x: frame.midX - view.frame.size.width / 2.5, y: frame.midY - view.frame.size.height / 2.25)
         addChild(self.aka_sita)
         
         self.aka_hidari = SKSpriteNode(imageNamed: "aka_hidari")
         self.aka_hidari.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.aka_hidari.position = CGPoint(x: frame.midX - view.frame.size.width / 1.63, y: frame.midY - view.frame.size.height / 2.23)
+        self.aka_hidari.position = CGPoint(x: frame.midX - view.frame.size.width / 2.15, y: frame.midY - view.frame.size.height / 2.8)
         addChild(self.aka_hidari)
         
         self.aka_migi = SKSpriteNode(imageNamed: "aka_migi")
         self.aka_migi.scale(to: CGSize(width: frame.width / 15, height: frame.width / 15))
-        self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 2.29, y: frame.midY - view.frame.size.height / 2.23)
+        self.aka_migi.position = CGPoint(x: frame.midX - view.frame.size.width / 3, y: frame.midY - view.frame.size.height / 2.8)
         addChild(self.aka_migi)
         
         //お客さん各種を表示
@@ -424,8 +424,8 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         scoreLabel = SKLabelNode(text:"所持金:0" )
         //        scoreLabel.fontName = "HiraMinProN-W3"
         scoreLabel.fontName = "Papyrus"
-        scoreLabel.fontSize = 25
-        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
+        scoreLabel.fontSize = 35
+        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 2.5, y: frame.midY - view.frame.size.height / 8)
         scoreLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
         addChild(scoreLabel)
 
@@ -433,21 +433,21 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         scoreLabel2 = SKLabelNode(text:"所持金:0" )
 //        scoreLabel2.fontName = "HiraMinProN-W3"
         scoreLabel2.fontName = "Papyrus"
-        scoreLabel2.fontSize = 25
-        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.6, y: frame.midY -
+        scoreLabel2.fontSize = 35
+        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 2.5, y: frame.midY -
             view.frame.size.height / 8)
         scoreLabel2.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
 
         addChild(scoreLabel2)
 
     
-
+//      制限時間
         
-        timerLabel = SKLabelNode(text: "残り時間:0")
+        timerLabel = SKLabelNode(text: "残り時間:80")
         timerLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
         timerLabel.fontName = "Papyrus"
-        timerLabel.fontSize = 60
-        timerLabel.position = CGPoint(x:0, y: 450)
+        timerLabel.fontSize = 45
+        timerLabel.position = CGPoint(x: frame.midX, y: frame.midY + view.frame.size.height / 2.3)
         addChild(timerLabel)
 
     }

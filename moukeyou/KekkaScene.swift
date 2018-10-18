@@ -16,6 +16,21 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var haikei2:SKSpriteNode!
     var haikei3:SKSpriteNode!
     var moukeru:SKSpriteNode!
+    var scoreLabel: SKLabelNode!
+    var scoreLabel2: SKLabelNode!
+    //赤
+    var score_aka: Int = 0 {
+        didSet {
+            scoreLabel.text = "所持金: \(score_aka)"
+        }
+    }
+    
+    //青
+    var score_ao: Int = 0 {
+        didSet {
+            scoreLabel2.text = "所持金: \(score_ao)"
+        }
+    }
     // ゲームシーンに戻る関数
     func goToGameScene(){
         // 戻したいゲームシーンを画面の大きさとともに設定する
@@ -58,6 +73,29 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.moukeru.zPosition = 100
         addChild(self.moukeru)
 
+        scoreLabel = SKLabelNode(text:"所持金:0" )
+        //        scoreLabel.fontName = "HiraMinProN-W3"
+        scoreLabel.fontName = "Papyrus"
+        scoreLabel.fontSize = 25
+        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
+        scoreLabel.zPosition = 100
+        scoreLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+        addChild(scoreLabel)
+        
+        //青の得点表
+        scoreLabel2 = SKLabelNode(text:"所持金:0" )
+        //        scoreLabel2.fontName = "HiraMinProN-W3"
+        scoreLabel2.fontName = "Papyrus"
+        scoreLabel2.fontSize = 25
+        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.6, y: frame.midY -
+            view.frame.size.height / 8)
+        scoreLabel2.zPosition = 100
+        scoreLabel2.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+        
+        addChild(scoreLabel2)
+
+        score_aka = score
+        score_ao = score2
         //self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
         
         

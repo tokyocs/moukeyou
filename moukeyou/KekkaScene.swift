@@ -77,7 +77,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        scoreLabel.fontName = "HiraMinProN-W3"
         scoreLabel.fontName = "Papyrus"
         scoreLabel.fontSize = 40
-        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 2.5, y: frame.midY - view.frame.size.height / 8)
+        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
         scoreLabel.zPosition = 100
         scoreLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
         addChild(scoreLabel)
@@ -87,7 +87,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //        scoreLabel2.fontName = "HiraMinProN-W3"
         scoreLabel2.fontName = "Papyrus"
         scoreLabel2.fontSize = 40
-        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 2.5, y: frame.midY -
+        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.7, y: frame.midY -
             view.frame.size.height / 8)
         scoreLabel2.zPosition = 100
         scoreLabel2.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)

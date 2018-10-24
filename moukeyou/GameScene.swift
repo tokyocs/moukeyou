@@ -69,6 +69,10 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var aka_ie:SKSpriteNode!
     var ao_ie:SKSpriteNode!
     
+    var aka_ie_texture:SKTexture!
+    var circular_aka_ie:SKSpriteNode!
+    var ao_ie_texture:SKTexture!
+    var circular_ao_ie:SKSpriteNode!
     //タイマー
     var nokorijikan:Int = 80
     var timerLabel: SKLabelNode!
@@ -184,15 +188,14 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             }
             if okane.categoryBitMask == ie_bigCategory {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width*1.2 ,height:self.aka_ie.size.height*1.2 ))
-                self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 30, height:self.aka_ie.size.height / 30))
+                 self.aka_ie.physicsBody = SKPhysicsBody(texture: aka_ie_texture,size: CGSize(width: circular_aka_ie.size.width,height: circular_aka_ie.size.height))
                 self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
                 self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
                 self.aka_ie.physicsBody?.collisionBitMask = 0
             }
             if okane.categoryBitMask == ie_smallCategory {
                 self.aka_ie.scale(to: CGSize(width: self.aka_ie.size.width/1.2 ,height:self.aka_ie.size.height/1.2 ))
-                
-                self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 30, height:self.aka_ie.size.width / 30))
+                 self.aka_ie.physicsBody = SKPhysicsBody(texture: aka_ie_texture,size: CGSize(width: circular_aka_ie.size.width,height: circular_aka_ie.size.height))
                 self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
                 self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
                 self.aka_ie.physicsBody?.collisionBitMask = 0
@@ -227,7 +230,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             }
             if okane.categoryBitMask == ie_bigCategory {
                 self.ao_ie.scale(to: CGSize(width:self.ao_ie.size.width*1.2 ,height:self.ao_ie.size.height*1.2 ))
-                self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.aka_ie.size.width / 7, height:self.aka_ie.size.height / 7))
+                 self.ao_ie.physicsBody = SKPhysicsBody(texture: ao_ie_texture,size: CGSize(width: circular_ao_ie.size.width,height: circular_ao_ie.size.height))
                 self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
                 self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
                 self.ao_ie.physicsBody?.collisionBitMask = 0
@@ -235,7 +238,7 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             }
             if okane.categoryBitMask == ie_smallCategory {
                 self.ao_ie.scale(to: CGSize(width: self.ao_ie.size.width/1.2 ,height:self.ao_ie.size.height/1.2 ))
-                self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: self.ao_ie.size.width / 7, height:self.ao_ie.size.width / 7))
+                 self.ao_ie.physicsBody = SKPhysicsBody(texture: ao_ie_texture,size: CGSize(width: circular_ao_ie.size.width,height: circular_ao_ie.size.height))
                 self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
                 self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
                 self.ao_ie.physicsBody?.collisionBitMask = 0
@@ -321,19 +324,24 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         self.backgroundColor = UIColor(red: 0.8, green: 1.0, blue: 0.5, alpha:1.0)
         
         //　お店の表示
-        self.aka_ie = SKSpriteNode(imageNamed: "aka_ie")
-        self.aka_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
+        self.aka_ie_texture = SKTexture(imageNamed: "aka_ie")
+        self.circular_aka_ie = SKSpriteNode(texture: aka_ie_texture)
+        self.aka_ie = SKSpriteNode(texture: aka_ie_texture)
+        self.aka_ie.scale(to: CGSize(width: frame.width / 6, height: frame.width / 6))
         self.aka_ie.position = CGPoint(x: frame.midX - view.frame.size.width / 2.5, y: frame.midY + view.frame.size.height / 3)
-        self.aka_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
+        self.aka_ie.physicsBody = SKPhysicsBody(texture: aka_ie_texture,size: CGSize(width: circular_aka_ie.size.width,height: circular_aka_ie.size.height))
         self.aka_ie.physicsBody?.categoryBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.contactTestBitMask = aka_ieCategory
         self.aka_ie.physicsBody?.collisionBitMask = 0
         addChild(self.aka_ie)
         
-        self.ao_ie = SKSpriteNode(imageNamed: "ao_ie")
-        self.ao_ie.scale(to: CGSize(width: frame.width / 4, height: frame.width / 4))
+        
+        self.ao_ie_texture = SKTexture(imageNamed: "ao_ie")
+        self.circular_ao_ie = SKSpriteNode(texture: ao_ie_texture)
+        self.ao_ie = SKSpriteNode(texture: ao_ie_texture)
+        self.ao_ie.scale(to: CGSize(width: frame.width / 6, height: frame.width / 6))
         self.ao_ie.position = CGPoint(x: frame.midX + view.frame.size.width / 2.5, y: frame.midY + view.frame.size.height / 3)
-        self.ao_ie.physicsBody = SKPhysicsBody(rectangleOf: CGSize(width: frame.width / 35, height: frame.width / 35))
+        self.ao_ie.physicsBody = SKPhysicsBody(texture: ao_ie_texture,size: CGSize(width: circular_ao_ie.size.width,height: circular_ao_ie.size.height))
         self.ao_ie.physicsBody?.categoryBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.contactTestBitMask = ao_ieCategory
         self.ao_ie.physicsBody?.collisionBitMask = 0

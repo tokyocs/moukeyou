@@ -18,7 +18,6 @@
 		2C9AEFB72154C6530015976F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9AEFB52154C6530015976F /* LaunchScreen.storyboard */; };
 		2C9AEFC22154C6540015976F /* moukeyouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFC12154C6540015976F /* moukeyouTests.swift */; };
 		2C9AEFCD2154C6540015976F /* moukeyouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFCC2154C6540015976F /* moukeyouUITests.swift */; };
-		2CF7338221684CF000A13313 /* power-up1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CF7338121684CF000A13313 /* power-up1.mp3 */; };
 		344AC682216DC80E004BA1E9 /* KekkaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344AC681216DC80E004BA1E9 /* KekkaScene.swift */; };
 		34E16B35215C7E7100749FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E16B34215C7E7100749FE6 /* ViewController.swift */; };
 		34E16B392161ADE500749FE6 /* reji sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E16B382161ADE500749FE6 /* reji sound.mp3 */; };
@@ -58,7 +57,6 @@
 		2C9AEFC82154C6540015976F /* moukeyouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moukeyouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9AEFCC2154C6540015976F /* moukeyouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moukeyouUITests.swift; sourceTree = "<group>"; };
 		2C9AEFCE2154C6540015976F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		2CF7338121684CF000A13313 /* power-up1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "power-up1.mp3"; sourceTree = "<group>"; };
 		344AC681216DC80E004BA1E9 /* KekkaScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KekkaScene.swift; sourceTree = "<group>"; };
 		34E16B34215C7E7100749FE6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34E16B382161ADE500749FE6 /* reji sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "reji sound.mp3"; sourceTree = "<group>"; };
@@ -120,7 +118,6 @@
 				2C9AEFB02154C6530015976F /* Main.storyboard */,
 				2C9AEFB32154C6530015976F /* Assets.xcassets */,
 				34E16B382161ADE500749FE6 /* reji sound.mp3 */,
-				2CF7338121684CF000A13313 /* power-up1.mp3 */,
 				2C74E0452161A85D00D3E7CF /* nezumi.mp3 */,
 				2C9AEFB52154C6530015976F /* LaunchScreen.storyboard */,
 				34E16B34215C7E7100749FE6 /* ViewController.swift */,
@@ -215,6 +212,7 @@
 				TargetAttributes = {
 					2C9AEFA22154C6530015976F = {
 						CreatedOnToolsVersion = 8.2.1;
+						DevelopmentTeam = QNYMJV4WVM;
 						ProvisioningStyle = Automatic;
 					};
 					2C9AEFBC2154C6540015976F = {
@@ -257,7 +255,6 @@
 				2C9AEFB22154C6530015976F /* Main.storyboard in Resources */,
 				2C9AEFA92154C6530015976F /* GameScene.sks in Resources */,
 				34E16B392161ADE500749FE6 /* reji sound.mp3 in Resources */,
-				2CF7338221684CF000A13313 /* power-up1.mp3 in Resources */,
 				2C9AEFB42154C6530015976F /* Assets.xcassets in Resources */,
 				2C9AEFB72154C6530015976F /* LaunchScreen.storyboard in Resources */,
 				2C74E0462161A85D00D3E7CF /* nezumi.mp3 in Resources */,
@@ -442,6 +439,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QNYMJV4WVM;
 				INFOPLIST_FILE = moukeyou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TCS.moukeyou;
@@ -454,6 +452,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				DEVELOPMENT_TEAM = QNYMJV4WVM;
 				INFOPLIST_FILE = moukeyou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = TCS.moukeyou;

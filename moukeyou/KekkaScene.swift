@@ -18,7 +18,9 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var moukeru:SKSpriteNode!
     var scoreLabel: SKLabelNode!
     var scoreLabel2: SKLabelNode!
-    //赤
+    //音
+    var LastPlayer: AVAudioPlayer!
+       //赤
     var score_aka: Int = 0 {
         didSet {
             scoreLabel.text = "所持金: \(score_aka)"
@@ -45,57 +47,90 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
 
     
     override func didMove(to view: SKView) {
-        let ud = UserDefaults.standard
-        let score = ud.integer(forKey: "score")
-        let score2 = ud.integer(forKey: "score2")
-        if score > score2 {
-            self.haikei = SKSpriteNode(imageNamed: "akawin")
-            self.haikei.xScale = view.frame.size.width/self.haikei.size.width
-            self.haikei.yScale = view.frame.size.height/self.haikei.size.height
-            self.haikei.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
-            addChild(self.haikei)
-        }else if score < score2 {
-            self.haikei2 = SKSpriteNode(imageNamed: "aowin")
-            self.haikei2.xScale = view.frame.size.width/self.haikei2.size.width
-            self.haikei2.yScale = view.frame.size.height/self.haikei2.size.height
-            self.haikei2.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
-            addChild(self.haikei2)
-        }else if score == score2 {
-            self.haikei3 = SKSpriteNode(imageNamed: "hikiwake")
-            self.haikei3.xScale = view.frame.size.width/self.haikei3.size.width
-            self.haikei3.yScale = view.frame.size.height/self.haikei3.size.height
-            self.haikei3.position = CGPoint(x: size.width * 0.5 , y: size.height * 0.5)
-            addChild(self.haikei3)
+        //音
+
+        func playLast(name: String) {
+            guard let path = Bundle.main.path(forResource: name, ofType: "wav") else {
+                print("drum-roll1")
+                return
+            }
+            
+            do {
+                // AVBGMPlayerのインスタンス化
+                LastPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                
+                // AVBGMPlayerのデリゲートをセット
+                LastPlayer.delegate = self
+                
+                // 音声の再生
+                LastPlayer.play()
+            } catch {
+            }
         }
-        self.moukeru = SKSpriteNode(imageNamed: "moukeru")
-        self.moukeru.scale(to: CGSize(width: frame.width / 5, height: frame.width / 5))
-        self.moukeru.position = CGPoint(x: frame.midX, y: frame.midY - view.frame.size.height / 4)
-        self.moukeru.zPosition = 100
-        addChild(self.moukeru)
-
-        scoreLabel = SKLabelNode(text:"所持金:0" )
-        //        scoreLabel.fontName = "HiraMinProN-W3"
-        scoreLabel.fontName = "Papyrus"
-        scoreLabel.fontSize = 40
-        scoreLabel.position = CGPoint(x: frame.midX - view.frame.size.width / 3.7, y: frame.midY - view.frame.size.height / 8)
-        scoreLabel.zPosition = 100
-        scoreLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
-        addChild(scoreLabel)
         
-        //青の得点表
-        scoreLabel2 = SKLabelNode(text:"所持金:0" )
-        //        scoreLabel2.fontName = "HiraMinProN-W3"
-        scoreLabel2.fontName = "Papyrus"
-        scoreLabel2.fontSize = 40
-        scoreLabel2.position = CGPoint(x: frame.midX + view.frame.size.width / 3.7, y: frame.midY -
-            view.frame.size.height / 8)
-        scoreLabel2.zPosition = 100
-        scoreLabel2.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+    
+        playLast(name: "saigo")
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+            let ud = UserDefaults.standard
+            let score = ud.integer(forKey: "score")
+            let score2 = ud.integer(forKey: "score2")
+            if score > score2 {
+                self.haikei = SKSpriteNode(imageNamed: "akawin")
+                self.haikei.xScale = view.frame.size.width/self.haikei.size.width
+                self.haikei.yScale = view.frame.size.height/self.haikei.size.height
+                self.haikei.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
+                self.addChild(self.haikei)
+            }else if score < score2 {
+                self.haikei2 = SKSpriteNode(imageNamed: "aowin")
+                self.haikei2.xScale = view.frame.size.width/self.haikei2.size.width
+                self.haikei2.yScale = view.frame.size.height/self.haikei2.size.height
+                self.haikei2.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
+                self.addChild(self.haikei2)
+            }else if score == score2 {
+                self.haikei3 = SKSpriteNode(imageNamed: "hikiwake")
+                self.haikei3.xScale = view.frame.size.width/self.haikei3.size.width
+                self.haikei3.yScale = view.frame.size.height/self.haikei3.size.height
+                self.haikei3.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
+                self.addChild(self.haikei3)
+            }
+            self.moukeru = SKSpriteNode(imageNamed: "moukeru")
+            self.moukeru.scale(to: CGSize(width: self.frame.width / 5, height: self.frame.width / 5))
+            self.moukeru.position = CGPoint(x: self.frame.midX, y: self.frame.midY - view.frame.size.height / 4)
+            self.moukeru.zPosition = 100
+            self.addChild(self.moukeru)
+            
+            self.scoreLabel = SKLabelNode(text:"所持金:0" )
+            //        scoreLabel.fontName = "HiraMinProN-W3"
+            self.scoreLabel.fontName = "Papyrus"
+            self.scoreLabel.fontSize = 40
+            self.scoreLabel.position = CGPoint(x: self.frame.midX - view.frame.size.width / 3.7, y: self.frame.midY - view.frame.size.height / 8)
+            self.scoreLabel.zPosition = 100
+            self.scoreLabel.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+            self.addChild(self.scoreLabel)
+            
+            //青の得点表
+            self.scoreLabel2 = SKLabelNode(text:"所持金:0" )
+            //        scoreLabel2.fontName = "HiraMinProN-W3"
+            self.scoreLabel2.fontName = "Papyrus"
+            self.scoreLabel2.fontSize = 40
+            self.scoreLabel2.position = CGPoint(x: self.frame.midX + view.frame.size.width / 3.7, y: self.frame.midY -
+                view.frame.size.height / 8)
+            self.scoreLabel2.zPosition = 100
+            self.scoreLabel2.fontColor = UIColor(red: 0, green: 0, blue: 0, alpha:1)
+            
+            self.addChild(self.scoreLabel2)
+            
+            self.score_aka = score
+            self.score_ao = score2
+            
+        }
         
-        addChild(scoreLabel2)
+    }
+        
+            //ここまで音
+             //音はここまで
+        
 
-        score_aka = score
-        score_ao = score2
         //self.haikei.scale(to: CGSize(width: view.frame.size.width, height: view.frame.size.height ))
         
         
@@ -133,7 +168,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
 //        backLabel.name = "Back"
 //        self.addChild(backLabel)
         
-    }
+    
         override func touchesEnded(_ touches: Set<UITouch>, with event: UIEvent?) {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
@@ -141,8 +176,9 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             if touchNode == moukeru {
                 goToGameScene()
             }
+            }
         }
-    }
+    
 
 
 }

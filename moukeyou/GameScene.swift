@@ -313,6 +313,10 @@ class GameScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         //残りの時間を減らす
         timer2 = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true, block: { _ in
             self.timer3 = self.timer3 - 1
+            if(self.timer3 == 20){
+                    self.scoreLabel.removeFromParent()
+                    self.scoreLabel2.removeFromParent()
+            }
             //0秒になったらゲームオーバー
             if(self.timer3 <= 0) {
                 self.gameOver()

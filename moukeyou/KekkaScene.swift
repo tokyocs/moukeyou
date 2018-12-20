@@ -89,7 +89,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         
     
         playLast(name: "saigo")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1.9) {
             let ud = UserDefaults.standard
             let score = ud.integer(forKey: "score")
             let score2 = ud.integer(forKey: "score2")
@@ -141,9 +141,9 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             
             self.score_aka = score
             self.score_ao = score2
-            
-            playWao(name: "dondonpafupafu1")
-
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                playWao(name: "dondonpafupafu1")
+            }
             
         }
         

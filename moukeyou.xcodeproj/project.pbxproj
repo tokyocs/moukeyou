@@ -19,6 +19,7 @@
 		2C9AEFB72154C6530015976F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 2C9AEFB52154C6530015976F /* LaunchScreen.storyboard */; };
 		2C9AEFC22154C6540015976F /* moukeyouTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFC12154C6540015976F /* moukeyouTests.swift */; };
 		2C9AEFCD2154C6540015976F /* moukeyouUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2C9AEFCC2154C6540015976F /* moukeyouUITests.swift */; };
+		2CD1DE5A21CB1D9000353B64 /* dondonpafupafu1.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 2CD1DE5921CB1D9000353B64 /* dondonpafupafu1.mp3 */; };
 		344AC682216DC80E004BA1E9 /* KekkaScene.swift in Sources */ = {isa = PBXBuildFile; fileRef = 344AC681216DC80E004BA1E9 /* KekkaScene.swift */; };
 		34E16B35215C7E7100749FE6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 34E16B34215C7E7100749FE6 /* ViewController.swift */; };
 		34E16B392161ADE500749FE6 /* reji sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = 34E16B382161ADE500749FE6 /* reji sound.mp3 */; };
@@ -59,6 +60,7 @@
 		2C9AEFC82154C6540015976F /* moukeyouUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = moukeyouUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		2C9AEFCC2154C6540015976F /* moukeyouUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = moukeyouUITests.swift; sourceTree = "<group>"; };
 		2C9AEFCE2154C6540015976F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		2CD1DE5921CB1D9000353B64 /* dondonpafupafu1.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = dondonpafupafu1.mp3; sourceTree = "<group>"; };
 		344AC681216DC80E004BA1E9 /* KekkaScene.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = KekkaScene.swift; sourceTree = "<group>"; };
 		34E16B34215C7E7100749FE6 /* ViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		34E16B382161ADE500749FE6 /* reji sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "reji sound.mp3"; sourceTree = "<group>"; };
@@ -122,6 +124,7 @@
 				34E16B382161ADE500749FE6 /* reji sound.mp3 */,
 				2C74E0452161A85D00D3E7CF /* nezumi.mp3 */,
 				2C0527A021AE6D4B00CCAE48 /* saigo.wav */,
+				2CD1DE5921CB1D9000353B64 /* dondonpafupafu1.mp3 */,
 				2C9AEFB52154C6530015976F /* LaunchScreen.storyboard */,
 				34E16B34215C7E7100749FE6 /* ViewController.swift */,
 				344AC681216DC80E004BA1E9 /* KekkaScene.swift */,
@@ -259,6 +262,7 @@
 				2C9AEFA92154C6530015976F /* GameScene.sks in Resources */,
 				34E16B392161ADE500749FE6 /* reji sound.mp3 in Resources */,
 				2C0527A121AE6D4B00CCAE48 /* saigo.wav in Resources */,
+				2CD1DE5A21CB1D9000353B64 /* dondonpafupafu1.mp3 in Resources */,
 				2C9AEFB42154C6530015976F /* Assets.xcassets in Resources */,
 				2C9AEFB72154C6530015976F /* LaunchScreen.storyboard in Resources */,
 				2C74E0462161A85D00D3E7CF /* nezumi.mp3 in Resources */,

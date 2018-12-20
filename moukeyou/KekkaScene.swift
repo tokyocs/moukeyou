@@ -20,6 +20,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var scoreLabel2: SKLabelNode!
     //音
     var LastPlayer: AVAudioPlayer!
+    var WaoPlayer: AVAudioPlayer!
        //赤
     var score_aka: Int = 0 {
         didSet {
@@ -67,10 +68,28 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             } catch {
             }
         }
+        func playWao(name: String) {
+            guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
+                print("dondonpafupafu1")
+                return
+            }
+            
+            do {
+                // AVBGMPlayerのインスタンス化
+                WaoPlayer = try AVAudioPlayer(contentsOf: URL(fileURLWithPath: path))
+                
+                // AVBGMPlayerのデリゲートをセット
+                WaoPlayer.delegate = self
+                
+                // 音声の再生
+                WaoPlayer.play()
+            } catch {
+            }
+        }
         
     
         playLast(name: "saigo")
-        DispatchQueue.main.asyncAfter(deadline: .now() + 2.8) {
+        DispatchQueue.main.asyncAfter(deadline: .now() + 2.7) {
             let ud = UserDefaults.standard
             let score = ud.integer(forKey: "score")
             let score2 = ud.integer(forKey: "score2")
@@ -122,6 +141,9 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             
             self.score_aka = score
             self.score_ao = score2
+            
+            playWao(name: "dondonpafupafu1")
+
             
         }
         

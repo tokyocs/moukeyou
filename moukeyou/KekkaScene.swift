@@ -70,7 +70,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         }
         func playWao(name: String) {
             guard let path = Bundle.main.path(forResource: name, ofType: "mp3") else {
-                print("dondonpafupafu1")
+                print("clapping-hands1")
                 return
             }
             
@@ -142,7 +142,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
             self.score_aka = score
             self.score_ao = score2
             DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                playWao(name: "dondonpafupafu1")
+                playWao(name: "clapping-hands1")
             }
             
         }

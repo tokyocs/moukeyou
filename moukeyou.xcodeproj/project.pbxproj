@@ -221,7 +221,7 @@
 				TargetAttributes = {
 					2C9AEFA22154C6530015976F = {
 						CreatedOnToolsVersion = 8.2.1;
-						DevelopmentTeam = QNYMJV4WVM;
+						DevelopmentTeam = QG5DPWSJCU;
 						ProvisioningStyle = Automatic;
 					};
 					2C9AEFBC2154C6540015976F = {
@@ -451,12 +451,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QNYMJV4WVM;
+				DEVELOPMENT_TEAM = QG5DPWSJCU;
 				INFOPLIST_FILE = moukeyou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TCS.moukeyou;
+				PRODUCT_BUNDLE_IDENTIFIER = org.tokyocs.moukeyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Debug;
 		};
@@ -464,12 +465,13 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
-				DEVELOPMENT_TEAM = QNYMJV4WVM;
+				DEVELOPMENT_TEAM = QG5DPWSJCU;
 				INFOPLIST_FILE = moukeyou/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = TCS.moukeyou;
+				PRODUCT_BUNDLE_IDENTIFIER = org.tokyocs.moukeyou;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 3.0;
+				TARGETED_DEVICE_FAMILY = 2;
 			};
 			name = Release;
 		};

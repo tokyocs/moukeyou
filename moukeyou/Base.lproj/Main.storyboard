@@ -526,6 +526,9 @@
                                 <state key="normal" title="前へ">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cex-1D-IsP" kind="presentation" id="19D-Vj-GUJ"/>
+                                </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_ie" translatesAutoresizingMaskIntoConstraints="NO" id="7n8-qC-0aA">
                                 <rect key="frame" x="377" y="399" width="271" height="170"/>
@@ -599,8 +602,8 @@
     </resources>
     <inferredMetricsTieBreakers>
         <segue reference="iUC-8Y-5P9"/>
-        <segue reference="Pie-Ip-QmW"/>
         <segue reference="wsZ-5S-OsQ"/>
+        <segue reference="19D-Vj-GUJ"/>
         <segue reference="lKN-9w-ww4"/>
         <segue reference="V0i-0s-YYI"/>
         <segue reference="DFK-lw-XK1"/>

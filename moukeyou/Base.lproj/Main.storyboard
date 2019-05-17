@@ -191,6 +191,9 @@
                                 <state key="normal" title="次へ">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="cex-1D-IsP" kind="presentation" id="Pie-Ip-QmW"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="eTf-MO-AhJ">
                                 <rect key="frame" x="893" y="680" width="111" height="68"/>
@@ -316,7 +319,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="fKz-W5-viw" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-817" y="242"/>
+            <point key="canvasLocation" x="-832" y="128"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="WYg-sK-3aZ">
@@ -337,23 +340,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hg-JD-bny">
-                                <rect key="frame" x="20" y="143" width="984" height="238"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">② 自分の店の色と同じ矢印をタッチして
-店を動かし、お金の人を追いかける！</string>
-                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
-                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="FfA-j4-6oT">
-                                <rect key="frame" x="792" y="595" width="103" height="77"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="35"/>
-                                <state key="normal" title="次へ">
-                                    <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                </state>
-                            </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8OC-Aa-PJf">
                                 <rect key="frame" x="893" y="680" width="111" height="68"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -373,28 +359,47 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="cex-1D-IsP" kind="presentation" id="nmy-RB-CqM"/>
+                                    <segue destination="cex-1D-IsP" kind="presentation" id="Ssr-hb-W3J"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_ie" translatesAutoresizingMaskIntoConstraints="NO" id="I54-9h-OD3">
-                                <rect key="frame" x="124" y="399" width="271" height="170"/>
+                                <rect key="frame" x="377" y="399" width="271" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="GPz-BW-zbX">
-                                <rect key="frame" x="624" y="399" width="271" height="170"/>
+                                <rect key="frame" x="426" y="275" width="187" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_migi" translatesAutoresizingMaskIntoConstraints="NO" id="jTT-Hs-PVe">
-                                <rect key="frame" x="426" y="436" width="177" height="96"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="tenyen" translatesAutoresizingMaskIntoConstraints="NO" id="M7h-gQ-ajh">
+                                <rect key="frame" x="339" y="575" width="187" height="116"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gojyuuyen" translatesAutoresizingMaskIntoConstraints="NO" id="yvY-WV-5ha">
+                                <rect key="frame" x="507" y="575" width="187" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="goyen" translatesAutoresizingMaskIntoConstraints="NO" id="wwZ-lD-7da">
+                                <rect key="frame" x="283" y="426" width="187" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="hyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="Ocw-ag-8Wd">
+                                <rect key="frame" x="572" y="426" width="187" height="116"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="④ 80秒間で店をもうける！" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6hg-JD-bny">
+                                <rect key="frame" x="20" y="89" width="984" height="238"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="50"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PnI-WP-Zb4" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1131" y="-1516"/>
+            <point key="canvasLocation" x="1130.859375" y="-1516.40625"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="FZx-B7-rjf">
@@ -418,8 +423,8 @@
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" lineBreakMode="tailTruncation" numberOfLines="25" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="p2F-H5-MdR">
                                 <rect key="frame" x="20" y="143" width="984" height="238"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <string key="text">② 自分の店の色と同じ矢印をタッチして
-店を動かし、お金の人を追いかける！</string>
+                                <string key="text">③ マイナスの人が降ってきたら避ける！
+</string>
                                 <fontDescription key="fontDescription" type="system" pointSize="50"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -431,6 +436,9 @@
                                 <state key="normal" title="次へ">
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
+                                <connections>
+                                    <segue destination="rAz-Ya-y3G" kind="presentation" id="Ha2-Kf-PXO"/>
+                                </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pos-A3-F9O">
                                 <rect key="frame" x="893" y="680" width="111" height="68"/>
@@ -451,19 +459,19 @@
                                     <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 </state>
                                 <connections>
-                                    <segue destination="gMx-9U-3uB" kind="presentation" id="3iA-JG-bbx"/>
+                                    <segue destination="gMx-9U-3uB" kind="presentation" id="lKN-9w-ww4"/>
                                 </connections>
                             </button>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_ie" translatesAutoresizingMaskIntoConstraints="NO" id="gMb-4p-Zos">
-                                <rect key="frame" x="124" y="399" width="271" height="170"/>
+                                <rect key="frame" x="377" y="399" width="271" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="gohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="X2x-g2-cCx">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="minusgohyakuyen" translatesAutoresizingMaskIntoConstraints="NO" id="X2x-g2-cCx">
                                 <rect key="frame" x="624" y="399" width="271" height="170"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_migi" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-xg-6Ya">
-                                <rect key="frame" x="426" y="436" width="177" height="96"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="aka_hidari" translatesAutoresizingMaskIntoConstraints="NO" id="zEj-xg-6Ya">
+                                <rect key="frame" x="192" y="436" width="177" height="96"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
                         </subviews>
@@ -476,13 +484,20 @@
         </scene>
     </scenes>
     <resources>
+        <image name="aka_hidari" width="320" height="320"/>
         <image name="aka_ie" width="167" height="168"/>
         <image name="aka_migi" width="320" height="320"/>
         <image name="ao_ie" width="160" height="162"/>
         <image name="gohyakuyen" width="320" height="320"/>
+        <image name="gojyuuyen" width="320" height="320"/>
+        <image name="goyen" width="320" height="320"/>
+        <image name="hyakuyen" width="320" height="320"/>
+        <image name="minusgohyakuyen" width="320" height="320"/>
+        <image name="tenyen" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="3iA-JG-bbx"/>
+        <segue reference="Ssr-hb-W3J"/>
+        <segue reference="lKN-9w-ww4"/>
         <segue reference="V0i-0s-YYI"/>
         <segue reference="EXz-2k-Y21"/>
     </inferredMetricsTieBreakers>

@@ -15,7 +15,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
     var haikei:SKSpriteNode!
     var haikei2:SKSpriteNode!
     var haikei3:SKSpriteNode!
-    var moukeru:SKSpriteNode!
+    var sprite_4:SKSpriteNode!
     var scoreLabel: SKLabelNode!
     var scoreLabel2: SKLabelNode!
     //音
@@ -112,11 +112,11 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
                 self.haikei3.position = CGPoint(x: self.size.width * 0.5 , y: self.size.height * 0.5)
                 self.addChild(self.haikei3)
             }
-            self.moukeru = SKSpriteNode(imageNamed: "moukeru")
-            self.moukeru.scale(to: CGSize(width: self.frame.width / 5, height: self.frame.width / 5))
-            self.moukeru.position = CGPoint(x: self.frame.midX, y: self.frame.midY - view.frame.size.height / 4)
-            self.moukeru.zPosition = 100
-            self.addChild(self.moukeru)
+            self.sprite_4 = SKSpriteNode(imageNamed: "sprite_4")
+            self.sprite_4.scale(to: CGSize(width: self.frame.width / 5, height: self.frame.width / 5))
+            self.sprite_4.position = CGPoint(x: self.frame.midX, y: self.frame.midY - view.frame.size.height / 4)
+            self.sprite_4.zPosition = 100
+            self.addChild(self.sprite_4)
             
             self.scoreLabel = SKLabelNode(text:"所持金:0" )
             //        scoreLabel.fontName = "HiraMinProN-W3"
@@ -195,7 +195,7 @@ class KekkaScene: SKScene,AVAudioPlayerDelegate, SKPhysicsContactDelegate {
         for touch: AnyObject in touches {
             let location = touch.location(in: self)
             let touchNode = self.atPoint(location)
-            if touchNode == moukeru {
+            if touchNode == sprite_4 {
                 goToGameScene()
             }
             }

@@ -601,11 +601,10 @@
         <image name="tenyen" width="320" height="320"/>
     </resources>
     <inferredMetricsTieBreakers>
-        <segue reference="iUC-8Y-5P9"/>
         <segue reference="wsZ-5S-OsQ"/>
         <segue reference="19D-Vj-GUJ"/>
         <segue reference="lKN-9w-ww4"/>
         <segue reference="V0i-0s-YYI"/>
-        <segue reference="DFK-lw-XK1"/>
+        <segue reference="EXz-2k-Y21"/>
     </inferredMetricsTieBreakers>
 </document>
